@@ -1,0 +1,83 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+  
+html {
+    font-size: 62.5%;
+}
+  
+body {
+    margin: 0;
+
+    font-size: 1.6rem;
+    // font-family: $main-font;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+button {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    transition: all 0.3s linear;
+
+    appearance: none;
+}
+  
+a {
+    text-decoration: none;
+
+    transition: all 0.3s linear;
+}
+
+h1,h2,h3,h4,p {
+    margin-top: 0;
+}
+
+figure,pre {
+    margin: 0;
+}
+  
+input {
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    transition: all 0.3s linear;
+
+    appearance: none;
+}
+  
+textarea {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    transition: all 0.3s linear;
+
+    resize: none;
+}
+
+ul,li {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
