@@ -3,8 +3,8 @@ module.exports = {
         'stylelint --fix',
         'git add',
     ],
-    '*.{(j|t)s?(x),.vue},': [
-        'eslint --fix --ext .js,.ts,.tsx,.vue .',
+    '*.{(j|t)s?(x),.vue}': [
+        'eslint --fix',
         'git add',
     ],
 };
