@@ -38,18 +38,5 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.16.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --config .eslintrc --ext .js,.vue --fix"
-    ],
-    "src/**/*.{css,scss,vue}": [
-      "stylelint --config .stylelintrc --fix"
-    ]
-  },
-  "husky_commentes": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

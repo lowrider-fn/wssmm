@@ -142,7 +142,7 @@ export default {
     },
     async asyncData() {
         const { data } = axios.get('/api/users');
-        return { users: dataaaaa };
+        return { users: dataaaa };
     },
     head() {
         return {
