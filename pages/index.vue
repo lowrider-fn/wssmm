@@ -141,7 +141,7 @@ export default {
     components: {
     },
     async asyncData() {
-        const { data } = axios.get('/api/users');
+        const { data } = await axios.get('/api/users');
         return { users: data };
     },
     head() {
