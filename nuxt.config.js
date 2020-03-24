@@ -70,8 +70,8 @@ export default {
     serverMiddleware: [
         '~/api/index.js',
     ],
-    server: {
-        port: 3000,
-        host: '0.0.0.0',
-    },
+    // server: {
+    //     port: 3000,
+    //     host: '0.0.0.0',
+    // },
 };
