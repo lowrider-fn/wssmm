@@ -48,7 +48,7 @@
       "stylelint --config .stylelintrc --fix"
     ]
   },
-  "husky_commentes": {
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
