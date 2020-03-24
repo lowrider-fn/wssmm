@@ -9,8 +9,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "eslint": "eslint --fix --ext .js,.ts,.tsx,.vue .",
-    "stylelint": "stylelint **/*.scss --fix",
+    "lint": "eslint --ext .js,.ts,.tsx,.vue .",
+    "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.vue .",
+    "stylelint": "stylelint **/*.{scss,vue} --fix",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
