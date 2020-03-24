@@ -44,6 +44,7 @@
         "media-feature-parentheses-space-inside":"always",
         "media-feature-colon-space-before":"never",
         "media-feature-colon-space-after":"always",
-        "block-opening-brace-space-before":"always"
+        "block-opening-brace-space-before":"always",
+        "block-no-empty": false
     }
 }

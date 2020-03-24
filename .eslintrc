@@ -34,6 +34,7 @@
         "vue/comment-directive":0,
         "vue/attribute-hyphenation":0,
         "vue/html-quotes":0,
+        "vue/no-unused-components":"warn",
         "vue/html-self-closing":[
             "error",
             {

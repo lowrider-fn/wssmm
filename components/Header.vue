@@ -40,7 +40,7 @@ export default {
 
     width: 100%;
 
-    background: white;
+    background: #FFF;
 }
 
 .nav__inner {
@@ -55,12 +55,16 @@ export default {
 }
 
 .nav__logo-wrap {
+    // a
 }
 
 .nav__logo {
+    // a
+
 }
 
 .nav__menu {
+    // a
 
 }
 
@@ -76,6 +80,8 @@ export default {
 }
 
 .nav__link {
+    // a
+
 }
 
 </style>

@@ -142,7 +142,7 @@ export default {
     },
     async asyncData() {
         const { data } = axios.get('/api/users');
-        return { users: dataaaa };
+        return { users: data };
     },
     head() {
         return {
@@ -220,7 +220,7 @@ h2 {
     }
 
     input,textarea {
-        border: 1px solid black;
+        border: 1px solid #000;
     }
 }
 
@@ -255,7 +255,7 @@ h2 {
         align-items: center;
         padding: 1rem;
 
-        border: 0.1rem solid black;
+        border: 0.1rem solid #000;
     }
 
     p {
