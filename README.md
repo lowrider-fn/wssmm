@@ -21,10 +21,14 @@ $ npm run start
 $ npm run generate
 
 # docker create img
-docker build -t registry.gitlab.com/vik_kod/nuxtjs_docker_example .
+docker build -t registry.gitlab.com/lowrider-fn/wssmm .
 
 # docker open
-docker run -p 3000:3000 registry.gitlab.com/vik_kod/nuxtjs_docker_example
+docker run -p 3000:3000 registry.gitlab.com/lowrider-fn/wssmm
+
+# docker push
+docker push registry.gitlab.com/lowrider-fn/wssmm
+
 
 # generate static project
 $ npm run generate
