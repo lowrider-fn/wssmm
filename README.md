@@ -1,12 +1,14 @@
-# ws
-
-> My terrific Nuxt.js project
+# wssmm
 
 ## Build Setup
 
 ```bash
 # install dependencies
-$ npm install
+git clone https://gitlab.com/lowrider-fn/wssmm.git
+
+cd wssmm
+
+npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
@@ -17,6 +19,15 @@ $ npm run start
 
 # generate static project
 $ npm run generate
-```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+# docker create img
+docker build -t registry.gitlab.com/vik_kod/nuxtjs_docker_example .
+
+# docker open
+docker run -p 3000:3000 registry.gitlab.com/vik_kod/nuxtjs_docker_example
+
+# generate static project
+$ npm run generate
+```
+## Documentations
+[Nuxt.js docs](https://nuxtjs.org).
