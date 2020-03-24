@@ -1,13 +1,9 @@
 module.exports = {
-    '*.scss': [
+    '*.{scss,vue}': [
         'stylelint --fix',
         'git add',
     ],
-    '*.(j|t)s?(x)': [
-        'eslint --fix',
-        'git add',
-    ],
-    '*.vue': [
+    '*.{(j|t)s?(x),vue}': [
         'eslint --fix',
         'git add',
     ],

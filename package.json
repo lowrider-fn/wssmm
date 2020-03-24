@@ -9,8 +9,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.ts,.tsx,.vue .",
-    "lint:fix": "eslint --fix --ext .js,.ts,.tsx,.vue .",
+    "eslint": "eslint --ext .js,.ts,.tsx,.vue .",
+    "eslint:fix": "eslint --fix --ext .js,.ts,.tsx,.vue .",
     "stylelint": "stylelint **/*.{scss,vue} --fix",
     "heroku-postbuild": "npm run build"
   },
@@ -39,18 +39,5 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.16.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --config .eslintrc --ext .js,.vue --fix"
-    ],
-    "src/**/*.{css,scss,vue}": [
-      "stylelint --config .stylelintrc --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
