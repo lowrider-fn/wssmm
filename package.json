@@ -9,8 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "eslint": "eslint --ext .js,.ts,.tsx,.vue .",
-    "eslint:fix": "eslint --fix --ext .js,.ts,.tsx,.vue .",
+    "eslint": "eslint --fix --ext .js,.ts,.tsx,.vue .",
     "stylelint": "stylelint **/*.{scss,vue} --fix",
     "heroku-postbuild": "npm run build"
   },

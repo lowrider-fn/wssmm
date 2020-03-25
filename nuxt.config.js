@@ -53,7 +53,7 @@ export default {
     build: {
         modern  : true,
         parallel: true,
-        vendor  : ['babel-polyfill'],
+        vendor  : ['babel-polyfill', 'axios'],
         postcss : {
             preset: {
                 autoprefixer: {
