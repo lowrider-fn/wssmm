@@ -1,14 +1,20 @@
 image: node
+
 before_script:
   - npm install
-cache:
-  paths:
-    - node_modules/
+
+stages:
+  - pages
+
 pages:
+  stage: pages
+  cache:
+    paths:
+    - node_modules/
   script:
-    - npm run build
+  - npm run generate
   artifacts:
     paths:
-      - public
+    - dist
   only:
-    - master
+  - master
