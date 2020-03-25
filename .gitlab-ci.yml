@@ -12,9 +12,9 @@ pages:
     paths:
     - node_modules/
   script:
-  - npm run build
+  - npm run generate
   artifacts:
     paths:
-    - .nuxt
+    - dist
   only:
   - master
