@@ -1,18 +1,19 @@
-image: node
+image: node:latest
 
 before_script:
   - npm install
 
 stages:
-  - pages
+  - build
 
-pages:
+build:
   stage: pages
   cache:
     paths:
     - node_modules/
   script:
-  - npm run generate
+  - npm run build
+  - npm run start
   artifacts:
     paths:
     - dist
