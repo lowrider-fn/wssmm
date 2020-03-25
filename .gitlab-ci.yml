@@ -4,16 +4,15 @@ before_script:
   - npm install
 
 stages:
-  - build
+  - pages
 
-build:
+pages:
   stage: pages
   cache:
     paths:
     - node_modules/
   script:
   - npm run build
-  - npm run start
   artifacts:
     paths:
     - dist
