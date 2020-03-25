@@ -50,6 +50,12 @@ export default {
             '~/assets/vars.scss',
         ],
     },
+    generate: {
+        dir: 'public',
+    },
+    router: {
+        base: '/wssmm/', // this is whatever the project is named
+    },
     build: {
         modern  : true,
         parallel: true,

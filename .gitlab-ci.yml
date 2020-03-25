@@ -1,20 +1,14 @@
-image: node:latest
-
+image: node
 before_script:
   - npm install
-
-stages:
-  - pages
-
-pages:
-  stage: pages
-  cache:
-    paths:
+cache:
+  paths:
     - node_modules/
+pages:
   script:
-  - npm run generate
+    - npm run generate
   artifacts:
     paths:
-    - dist
+      - public
   only:
-  - master
+    - master
