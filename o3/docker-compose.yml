@@ -2,7 +2,7 @@ version: "3.3"
 # Указываем раздел со связанными сервисами
 services:
  # Первый сервис, nginx
- nginx:
+nginx:
    image: nginx:latest
    # Пробрасываем порты 80 для http и 443 для https
    ports:
@@ -16,7 +16,7 @@ services:
      # Монтируем папку с логами на хост машину для более удобного доступа
      - ./logs:/var/log/nginx/
  # Второй сервис Nuxt.js приложение
- nuxt:
+nuxt:
    # Используем ранее собранный образ
    image: registry.gitlab.com/lowrider-fn/wssmm
    container_name: wssmma

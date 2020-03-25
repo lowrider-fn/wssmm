@@ -24,7 +24,7 @@ $ npm run generate
 ## Docker
 
 ```bash
-#add to nuxt.config
+#add to nuxt.config for docker create img
 server: {
     port: 3000,
     host: '0.0.0.0',
@@ -54,5 +54,8 @@ docker --command-- -d
 heroku create <name>
 ```
 [Nuxt to heroku](https://ru.nuxtjs.org/faq/heroku-deployment/)
+[Heroku deploy with git](https://devcenter.heroku.com/categories/deploying-with-git)
+[Heroku deploy with docker](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+
 ## Documentations
 [Nuxt.js docs](https://nuxtjs.org).
