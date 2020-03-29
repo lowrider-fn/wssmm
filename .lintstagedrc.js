@@ -7,4 +7,4 @@ module.exports = {
         'npm run eslint',
         'git add',
     ],
-};
+}

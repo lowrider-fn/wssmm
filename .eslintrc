@@ -27,6 +27,9 @@
         "no-console":0,
         "no-nested-ternary":0,
         "callback-return":0,
+        "import/prefer-default-export":0,
+        "global-require":0,
+        "consistent-return":0,
         "linebreak-style":0,
         "no-return-assign":0,
         "no-shadow":0,
@@ -120,13 +123,7 @@
         "no-unused-vars":"warn",
         "constructor-super":"warn",
         "valid-typeof":"warn",
-        "semi":[
-            "warn",
-            "always",
-            {
-                "omitLastInOneLineBlock":true
-            }
-        ],
+        "semi": ["error", "never"],
         "no-extra-semi":"error",
         "no-constant-condition":"error",
         "no-unreachable":"error",

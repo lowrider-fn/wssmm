@@ -1,0 +1,18 @@
+version: "3.3"
+# Указываем раздел со связанными сервисами
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./logs:/var/log/nginx/
+  front:
+    image: registry.gitlab.com/lowrider-fn/wssmm/front
+    container_name: wssmm
+    ports:
+      - "3000:3000"
+  
