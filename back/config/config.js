@@ -2,6 +2,6 @@
 module.exports = {
     secret     : 'supersecret',
     adminSecret: 'verysupersecret',
-    dbUrl      : 'mongodb://localhost:27017/',
+    dbUrl      : 'localhost:27017/wssmm',
     adminPwd   : '0000',
 }

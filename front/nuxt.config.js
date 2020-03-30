@@ -25,7 +25,7 @@ export default {
     ],
     modules: [
         '@nuxtjs/style-resources',
-        '@nuxtjs/axios',
+        ['@nuxtjs/axios', { proxy: true }],
         '@nuxtjs/proxy',
     ],
     styleResources: {
@@ -51,6 +51,10 @@ export default {
 
         },
     },
+    server: {
+        port: 3000,
+        host: '0.0.0.0',
+    },
     proxy: {
         '/api': {
             target     : 'http://localhost:7000',
@@ -60,4 +64,5 @@ export default {
         },
 
     },
+
 }

@@ -70,27 +70,27 @@ export default {
         form: {
             required: vuelidate.required,
             name    : {
-                required : vuelidate.required,
+                // required : vuelidate.required,
                 maxLength: vuelidate.maxLength(32),
                 // minLength: vuelidate.minLength(4),
                 $err     : vuelidate.errTexts(),
             },
             phone: {
-                required : vuelidate.required,
+                // required : vuelidate.required,
                 maxLength: vuelidate.maxLength(32),
                 // minLength: vuelidate.minLength(6),
                 $err     : vuelidate.errPhone(),
             },
             email: {
-                required : vuelidate.required,
+                // required : vuelidate.required,
                 maxLength: vuelidate.maxLength(60),
                 // email    : vuelidate.email,
                 $err     : vuelidate.errEmail(),
             },
             message: {
-                required: vuelidate.required,
+                // required: vuelidate.required,
                 // minLength: vuelidate.minLength(6),
-                $err    : vuelidate.errTexts(),
+                $err: vuelidate.errTexts(),
             },
         },
     },
@@ -98,7 +98,8 @@ export default {
         async sendHandler() {
             await this.$v.$touch()
             if (!this.$v.form.$invalid) {
-                this.$emit('login', this.form)
+                console.log(this)
+                this.$emit('send', this.form)
             }
         },
     },

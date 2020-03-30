@@ -1,5 +1,5 @@
 export default function ({ $axios }) {
-    $axios.defaults.baseURL = '/api'
+    $axios.defaults.baseURL = 'http://localhost:3000/api'
     $axios.defaults.timeout = 600000
     $axios.defaults.withCredentials = true
 

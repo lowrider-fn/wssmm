@@ -13,6 +13,14 @@ const actions = {
             throw err
         }
     },
+    async setUsers({ commit }, data) {
+        try {
+            const res = await this.app.api.users.post(data)
+            return res
+        } catch (err) {
+            throw err
+        }
+    },
     // login: async ({ commit }, data) => {
     //     const { res, err } = await new Api().post('/login', data)
 

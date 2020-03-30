@@ -4,7 +4,7 @@
         <Work />
         <Portfolio />
         <Why />
-        <Form />
+        <Form @send="send" />
         <Team :users="users" />
         <Reviews />
     </div>
@@ -20,11 +20,16 @@ export default {
     components: {
         Form, Portfolio, Work, Team, Why, Video, Reviews,
     },
+
     async asyncData(context) {
         try {
             const res = await context.store.dispatch('users')
+            // console.log(res)
+
             return { users: res.data }
         } catch (err) {
+            // console.error(err)
+
             return { users: [] }
         }
     },
@@ -33,14 +38,26 @@ export default {
             title: 'SMM агенство полного цикла',
         }
     },
-    async mounted() {
-        try {
-            const res = await this.$store.dispatch('users')
-            console.log(res)
-        } catch (err) {
-            console.log(err)
-        }
+    // async mounted() {
+    //     try {
+    //         const res = await this.$store.dispatch('users')
+    //         console.log(res)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // },
+    methods: {
+        async send(form) {
+            try {
+                const res = await this.$store.dispatch('setUsers', form)
+                this.users = res.data
+                return res
+            } catch (err) {
+                throw err
+            }
+        },
     },
+
 }
 </script>
 

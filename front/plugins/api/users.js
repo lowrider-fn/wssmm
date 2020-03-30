@@ -3,4 +3,8 @@ export const users = ({ $get: get, $post: post }) => ({
         const result = await get('/users')
         return result
     },
+    async post(data) {
+        const result = await post('/users', data)
+        return result
+    },
 })
