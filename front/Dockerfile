@@ -1,18 +1,18 @@
-FROM node:12-alpine as build-stage
+FROM node:alpine
 
 ENV NODE_ENV production
 
-WORKDIR /app
-RUN apk update && \
-    apk upgrade 
+WORKDIR /front
+RUN apk update\
+ && apk upgrade 
 
-COPY package.json /app/package.json
+COPY package.json /front/package.json
 
 RUN npm set progress=false && \
     npm install --silent
 RUN npm install @vue/cli -g
 
-COPY . /app
+COPY . /front
 RUN npm run build
 
 ENV HOST 0.0.0.0

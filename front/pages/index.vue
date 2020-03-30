@@ -13,7 +13,8 @@
 <script>
 import {
     Form, Portfolio, Work, Team, Why, Video, Reviews,
-} from '@/components/home'
+}
+    from '@/components/home'
 
 export default {
     components: {
