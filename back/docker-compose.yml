@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
+  back:
+    container_name: back
+    build: .
+    volumes:
+      - '.:/back'
+      - '/back/node_modules'
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/wssmm
+    
+    ports:
+      - "7000:7000" 
+    depends_on:
+      - mongodb
+  
+  
+  

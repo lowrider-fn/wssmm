@@ -7,6 +7,8 @@ RUN apk update\
  	&& apk upgrade \
 	&& apk add --no-cache --virtual .gyp python make g++ 
 
+ENV PATH /app/node_modules/.bin:$PATH
+
 COPY package.json /back/package.json
 
 RUN npm set progress=false && \

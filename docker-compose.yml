@@ -6,25 +6,31 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx/
+
   mongo:
     container_name: mongo
     image: mongo
-    volumes:
-      - ./data:/data/db
     ports:
       - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
   back:
-    container_name: wssmm
+    container_name: back
     image: registry.gitlab.com/lowrider-fn/wssmm/back
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/wssmm
     restart: always
     ports:
-      - "7000:7000"    
-  front:
-    container_name: front
+      - "7000:7000" 
+    depends_on:
+      - mongo
+
+  wssmm:
+    container_name: wssmm
     image: registry.gitlab.com/lowrider-fn/wssmm/front
     restart: always
     ports:

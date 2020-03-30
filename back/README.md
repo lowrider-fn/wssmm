@@ -1,4 +1,6 @@
-# wssmm front
+# wssmm back
+
+#### you must definitely install docker, mongo
 
 ## Setup
 
@@ -6,32 +8,26 @@
 # install dependencies
 git clone https://gitlab.com/lowrider-fn/wssmm.git
 
-cd wssmm/front
+cd wssmm/back
 
 npm install
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# serve with hot reload at localhost:7000
+$ npm run server or docker-compose up --build
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
 ## Docker
 
 ```bash
 # docker create img
-docker build -t registry.gitlab.com/lowrider-fn/wssmm/front .
+docker build -t registry.gitlab.com/lowrider-fn/wssmm/back .
 
 # docker check img
-docker run -p 3000:3000 registry.gitlab.com/lowrider-fn/wssmm/front
+docker run -p 7000:7000 registry.gitlab.com/lowrider-fn/wssmm/back
 
 # docker push img
-docker push registry.gitlab.com/lowrider-fn/wssmm/front
+docker push registry.gitlab.com/lowrider-fn/wssmm/back
 
 # docker up
 docker-compose up --build
@@ -39,7 +35,23 @@ docker-compose up --build
 #docker in the background
 docker <command> -d
 ```
+### Dockerfile
+```docker
+#add for dev and remove for prod
+ENV PATH /app/node_modules/.bin:$PATH
+```
 
+### docker-compose.yaml
+```yaml
+#for dev
+  build: .
+  volumes:
+    - '.:/back'
+		- '/back/node_modules'
+	  
+#for prod
+image: registry.gitlab.com/lowrider-fn/wssmm/back
+```
 
 ## Heroku
 
