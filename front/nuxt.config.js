@@ -16,8 +16,10 @@ export default {
         { src: '~/assets/normalize.scss', lang: 'scss' },
     ],
     plugins: [
-        { src: '~/plugins/axios.js' },
+        { src: '~/plugins/axios' },
         { src: '~/plugins/api' },
+        { src: '~/plugins/vuelidate' },
+
     ],
     buildModules: [
     ],
@@ -29,6 +31,7 @@ export default {
     styleResources: {
         scss: [
             '~/assets/vars.scss',
+            '~/assets/mixins.scss',
         ],
     },
     babel: {

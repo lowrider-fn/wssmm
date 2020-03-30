@@ -1,0 +1,38 @@
+@mixin tablet {
+    @media ( min-width: 768px ) and ( max-width: 1023px ) {
+        @content;
+    }
+}
+
+@mixin tablet-mini {
+    @media ( min-width: 500px ) and ( max-width: 767px ) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media ( max-width: 499px ) {
+        @content;
+    }
+}
+
+@mixin hover-focus {
+    @media screen and ( min-width: 1025px ) {
+
+        &:focus {
+            @content;
+        }
+
+        &:hover {
+            @content;
+        }
+    }
+}
+@mixin hover {
+    @media screen and ( min-width: 1025px ) {
+
+        &:hover {
+            @content;
+        }
+    }
+}
