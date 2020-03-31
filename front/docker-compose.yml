@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  front:
+    container_name: front
+    build: .
+    volumes:
+      - '.:/front'
+      - '/front/node_modules'
+    ports:
+      - "3000:3000"

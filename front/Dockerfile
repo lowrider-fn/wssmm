@@ -4,7 +4,8 @@ ENV NODE_ENV production
 
 WORKDIR /front
 RUN apk update\
- && apk upgrade 
+	&& apk upgrade \
+	&& apk add --no-cache
 
 COPY package.json /front/package.json
 
@@ -16,6 +17,8 @@ COPY . /front
 RUN npm run build
 
 ENV HOST 0.0.0.0
+ENV PORT 3000
+
 EXPOSE 3000
 
 CMD ["npm", "run", "start"]

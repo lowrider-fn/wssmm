@@ -7,8 +7,6 @@ RUN apk update\
  	&& apk upgrade \
 	&& apk add --no-cache --virtual .gyp python make g++ 
 
-ENV PATH /app/node_modules/.bin:$PATH
-
 COPY package.json /back/package.json
 
 RUN npm set progress=false && \
@@ -18,6 +16,9 @@ RUN npm install nodemon -g
 COPY . /back
 
 ENV HOST 0.0.0.0
+ENV PORT 7000
+
 EXPOSE 7000
+
 CMD ["nodemon","index.js"]
 

@@ -1,5 +1,7 @@
 # wssmm front
 
+#### you must definitely install docker, mongo
+
 ## Setup
 
 ```bash
@@ -40,6 +42,17 @@ docker-compose up --build
 docker <command> -d
 ```
 
+### docker-compose.yaml
+```yaml
+#for dev
+  build: .
+  volumes:
+    - '.:/front'
+		- '/front/node_modules'
+	  
+#for prod
+image: registry.gitlab.com/lowrider-fn/wssmm/back
+```
 
 ## Heroku
 

@@ -35,11 +35,6 @@ docker-compose up --build
 #docker in the background
 docker <command> -d
 ```
-### Dockerfile
-```docker
-#add for dev and remove for prod
-ENV PATH /app/node_modules/.bin:$PATH
-```
 
 ### docker-compose.yaml
 ```yaml
