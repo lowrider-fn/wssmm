@@ -60,7 +60,5 @@ export default {
                 '^/api': '/',
             },
         },
-
     },
-
 }

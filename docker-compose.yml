@@ -16,15 +16,15 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - .:/app/back/data
-      - ./db
+      - ./back/data
+      - ./back/db
 
   back:
     container_name: back
     build: ./back
     volumes:
-      - '.:/app/back'
-      - './node_modules'
+      - './back'
+      - './back/node_modules'
     environment:
       - MONGO_URI=mongodb://mongodb:27017/wssmm
     ports:
@@ -32,12 +32,12 @@ services:
     depends_on:
       - mongodb
 
-  wssmm:
-    container_name: wssmm
+  front:
+    container_name: front
     build: ./front
     volumes:
-      - '.:/app/wssmm'
-      - '/app/wssmm/node_modules'
+      - './front'
+      - './front/node_modules'
     ports:
       - "3000:3000"
   
