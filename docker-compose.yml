@@ -8,7 +8,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - ./nginx/logs:/var/log/nginx/
+      - ./logs:/var/log/nginx/
 
   mongodb:
     container_name: mongodb
@@ -16,15 +16,16 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./back/data
-      - ./back/db
+      - './back:/back'
+      - /back/data
+      - /back/db
 
   back:
     container_name: back
     build: ./back
     volumes:
-      - './back'
-      - './back/node_modules'
+      - './back:/back'
+      - '/back/node_modules'
     environment:
       - MONGO_URI=mongodb://mongodb:27017/wssmm
     ports:
@@ -36,8 +37,8 @@ services:
     container_name: front
     build: ./front
     volumes:
-      - './front'
-      - './front/node_modules'
+      - './front:/front'
+      - '/front/node_modules'
     ports:
       - "3000:3000"
   

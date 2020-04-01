@@ -1,14 +1,3 @@
 image: node
 before_script:
-  - npm install
-cache:
-  paths:
-    - node_modules/
-pages:
-  script:
-    - npm run generate
-  artifacts:
-    paths:
-      - public
-  only:
-    - master
+  - npm run up:build
