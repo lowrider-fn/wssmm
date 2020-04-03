@@ -1,44 +1,79 @@
 # wssmm 
 
-#### you must definitely install docker, mongo
+## Оглавление
+- [Инициализация проекта](#инициализация-проекта)
+- [Работа с окружением](#работа-с-окружением)
+    - [Docker](#docker)
+    - [docker-compose.yaml](#docker-compose.yaml)
+    - [Mongo](#mongo)
+    - [Линтинг](#линтинг)
+    - [Heroku](#heroku)
+- [Ссылки на ресурсы](#ссылки-на-ресурсы)
 
-## Docker
-```bash
-# show all containers 
-docker container ls -aq
+### Инициализация проекта
 
-# stop all containers
-docker container stop $(docker container ls -aq)
+Необходимо установить [Docker](https://docs.docker.com/v18.09/) 
 
-# remove all containers
-docker container rm $(docker container ls -aq)
+``` bash
+# клонируем репо
+git clone https://gitlab.com/lowrider-fn/wssmm.git
 
-# remove all unused object
-docker system prune
+# переходим в дирректорию проекта
+cd wssmm
 
-# show all imgs
-docker image ls
-
-# remove all unused imgs 
-docker image prune -a
-
-# remove all imgs
-docker rmi $(docker images -q)
-
-# show all network
-docker network ls
-
-# remove all unused network 
-docker network prune
-
-# remove all unused volumes
-docker volume prune
-
+# запускаем docker-compose
+npm run up:build
 ```
 
+### Работа с окружением
 
+#### Docker
 
-### docker-compose.yaml
+```bash
+# Запустить и собрать образы
+npm up:build
+
+# Запустить  образы
+npm up
+
+# Посмотреть все контейнеры
+npm run cont
+
+# Остановить все контейнеры
+npm run cont:stop
+
+# Удалить все контейнеры
+npm run cont:rm
+
+# Удалить все неиспользуемые объекты
+npm run rm-a
+
+# Посмотреть все образы
+npm run img
+
+# Удалить все неиспользуемые образы 
+npm run img:rm-a
+
+# Удалить все образы
+npm run img:rm
+
+# Посмотреть все сети
+npm run net
+
+# Удалить все неиспользуемые сети 
+npm run net:rm-a
+
+# Удалить все неиспользуемые тома
+npm run vol:rm-a
+```
+
+#### Mongo
+```bash
+    "db:dump": "mongodump --forceTableScan -d wssmm -o ./back/db",
+    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/"
+```
+
+#### docker-compose.yaml
 ```yaml
 #for dev
   build: .
@@ -50,17 +85,27 @@ docker volume prune
 image: registry.gitlab.com/lowrider-fn/wssmm/back
 ```
 
-## Heroku
+#### Линтинг 
+``` bash 
+# stylelint
+npm run stylelint
+
+# eslint
+npm run eslint
+```
+
+#### Heroku
 
 ```bash
 # init heroku 
 heroku create <name>
 ```
-[Nuxt to heroku](https://ru.nuxtjs.org/faq/heroku-deployment/)
+- [Nuxt to heroku](https://ru.nuxtjs.org/faq/heroku-deployment/)
+- [Heroku deploy with git](https://devcenter.heroku.com/categories/deploying-with-git)
+- [Heroku deploy with docker](https://devcenter.heroku.com/articles/container-registry-and-runtime)
 
-[Heroku deploy with git](https://devcenter.heroku.com/categories/deploying-with-git)
+### Ссылки на ресурсы:
 
-[Heroku deploy with docker](https://devcenter.heroku.com/articles/container-registry-and-runtime)
-
-## Documentations
-[Nuxt.js docs](https://nuxtjs.org).
+- Документация:
+	- [Nuxt.js docs](https://nuxtjs.org).
+	- [webpack proxy error](http://pokuwagata.hatenablog.com/entry/2019/07/28/191649)

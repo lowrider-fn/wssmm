@@ -7,13 +7,20 @@
   "scripts": {
     "eslint": "eslint --fix --ext .js,.ts,.tsx,.vue .",
     "stylelint": "stylelint **/*.{scss,vue} --fix",
-    "stop": "docker container stop $(docker container ls -aq)",
-    "rm:cont": "docker container rm $(docker container ls -aq)",
-    "rm:img": "docker image prune -a",
-    "rm:vol": "docker volume prune",
-    "rm": "docker system prune",
+    "cont": "docker container ls -aq",
+    "cont:stop": "docker container stop $(docker container ls -aq)",
+    "cont:rm": "docker container rm $(docker container ls -aq)",
+    "img": "docker image ls -aq",
+    "img:rm": "docker rmi $(docker images -q)",
+    "img:rm-a": "docker image prune -a",
+    "vol:rm-a": "docker volume prune",
+    "rm-a": "docker system prune",
+    "net": "docker network ls",
+    "net:rm-a": "docker network prune",
     "up": "docker-compose up",
-    "up:build": "docker-compose up --build"
+    "up:build": "docker-compose up --build",
+    "db:dump": "mongodump --forceTableScan -d wssmm -o ./back/db",
+    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

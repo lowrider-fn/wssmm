@@ -1,15 +1,5 @@
 version: "3.3"
 services:
-  nginx:
-    container_name: nginx
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./logs:/var/log/nginx/
-
   mongodb:
     container_name: mongodb
     image: mongo
@@ -41,6 +31,16 @@ services:
       - '/front/node_modules'
     ports:
       - "3000:3000"
-  
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./logs:/var/log/nginx/
+    
   
   
