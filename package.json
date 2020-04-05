@@ -20,7 +20,8 @@
     "up": "docker-compose up",
     "up:build": "docker-compose up --build",
     "db:dump": "mongodump --forceTableScan -d wssmm -o ./back/db",
-    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/"
+    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/",
+    "heroku-postbuild": "npm run up:build"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
