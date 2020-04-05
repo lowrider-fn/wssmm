@@ -1,15 +1,11 @@
-[production staging]
-> 0.2%
-last 3 versions
+> 1%
+last 2 versions
 not chrome < 50
-not ie < 11
 not firefox < 50
 not safari < 9
 not edge < 15
 not opera < 50
 not iOS < 9
 not android < 4.4.2
-
-[development]
-last 1 chrome version
-last 1 firefox version
+not IE 11
+not IE_Mob 11

@@ -1,5 +1,7 @@
+import baseURL from '~/api.config'
+
 export default function ({ $axios }) {
-    $axios.defaults.baseURL = 'http://localhost:3000/api'
+    $axios.defaults.baseURL = `http://${baseURL.client}`
     $axios.defaults.timeout = 600000
     $axios.defaults.withCredentials = true
 
@@ -9,6 +11,7 @@ export default function ({ $axios }) {
         const agent = new https.Agent({
             rejectUnauthorized: false,
         })
+        $axios.defaults.baseURL = `http://${baseURL.server}`
         $axios.defaults.httpsAgent = agent
     }
 

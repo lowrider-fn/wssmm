@@ -69,8 +69,11 @@ npm run vol:rm-a
 
 #### Mongo
 ```bash
-    "db:dump": "mongodump --forceTableScan -d wssmm -o ./back/db",
-    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/"
+#Сделать дамп базы данных
+npm run db:dump
+
+#Загрузить данные из дамп файла
+npm run db:dump-up
 ```
 
 #### docker-compose.yaml
@@ -78,11 +81,11 @@ npm run vol:rm-a
 #for dev
   build: .
   volumes:
-    - '.:/front'
-		- '/front/node_modules'
+    - '.:/dir'
+		- '/<dir>/node_modules'
 	  
 #for prod
-image: registry.gitlab.com/lowrider-fn/wssmm/back
+image: registry.gitlab.com/<repo>
 ```
 
 #### Линтинг 
@@ -109,3 +112,4 @@ heroku create <name>
 - Документация:
 	- [Nuxt.js docs](https://nuxtjs.org).
 	- [webpack proxy error](http://pokuwagata.hatenablog.com/entry/2019/07/28/191649)
+	- [Nuxt typescript](https://typescript.nuxtjs.org/guide/)

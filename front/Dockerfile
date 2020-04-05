@@ -1,6 +1,6 @@
 FROM node:alpine
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 WORKDIR /front
 RUN apk update\

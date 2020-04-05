@@ -2,6 +2,11 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "christian-kohler.path-intellisense"
+    "christian-kohler.path-intellisense",
+    "ms-azuretools.vscode-docker",
+    "cssho.vscode-svgviewer",
+    "octref.vetur",
+    "sdras.vue-vscode-snippets",
+    "dariofuzinato.vue-peek"
   ],
 }

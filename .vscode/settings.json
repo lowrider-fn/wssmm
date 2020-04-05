@@ -1,6 +1,7 @@
 {
   "path-intellisense.mappings": {
-    "@": "${workspaceRoot}/front/src"
+    "@": "${workspaceRoot}/front/src",
+    "~": "${workspaceRoot}/front/src"
   },
   "eslint.validate": [
     "javascript",
