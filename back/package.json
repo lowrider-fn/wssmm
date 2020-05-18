@@ -1,7 +1,7 @@
 {
-  "name": "wssmm-back",
+  "name": "gmw-back",
   "version": "1.0.0",
-  "description": "wssmm back",
+  "description": "gmw back",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js"

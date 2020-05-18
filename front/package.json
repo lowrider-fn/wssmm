@@ -1,7 +1,7 @@
 {
-  "name": "wssmm-front",
+  "name": "gmw-front",
   "version": "1.0.0",
-  "description": "wssmm front",
+  "description": "gmw front",
   "author": "lowrider-fn",
   "scripts": {
     "dev": "nuxt",

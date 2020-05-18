@@ -1,7 +1,7 @@
 {
-  "name": "wssmm",
+  "name": "gmw",
   "version": "1.0.0",
-  "description": "wssmm",
+  "description": "gmw",
   "author": "lowrider-fn",
   "private": true,
   "scripts": {
@@ -19,8 +19,8 @@
     "net:rm-a": "docker network prune",
     "up": "docker-compose up",
     "up:build": "docker-compose up --build",
-    "db:dump": "mongodump --forceTableScan -d wssmm -o ./back/db",
-    "db:dump-up": "mongorestore --drop --verbose --db wssmm ./back/db/wssmm/",
+    "db:dump": "mongodump --forceTableScan -d gmw -o ./back/db",
+    "db:dump-up": "mongorestore --drop --verbose --db gmw ./back/db/gmw/",
     "heroku-postbuild": "docker-compose up --build"
   },
   "devDependencies": {

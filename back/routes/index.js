@@ -9,7 +9,7 @@ module.exports = (app, db, config) => {
     //     console.log('ok')
 
     //     db.find().toArray((err, results) => {
-    //         res.status(200).cookie('wssmm', 'fuck', {
+    //         res.status(200).cookie('gmw', 'fuck', {
     //             httpOnly: false,
     //             expires : false,
     //         }).send(results)

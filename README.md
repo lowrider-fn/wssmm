@@ -1,4 +1,4 @@
-# wssmm 
+# gmw 
 
 ## Оглавление
 - [Инициализация проекта](#инициализация-проекта)
@@ -16,10 +16,10 @@
 
 ``` bash
 # клонируем репо
-git clone https://gitlab.com/lowrider-fn/wssmm.git
+git clone https://gitlab.com/lowrider-fn/gmw.git
 
 # переходим в дирректорию проекта
-cd wssmm
+cd gmw
 
 # запускаем docker-compose
 npm run up:build

@@ -17,7 +17,7 @@ services:
       - '.:/back'
       - '/back/node_modules'
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/wssmm
+      - MONGO_URI=mongodb://mongodb:27017/gmw
     ports:
       - "7000:7000" 
     depends_on:
