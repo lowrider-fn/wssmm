@@ -11,32 +11,44 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ],
     },
+
     loading: false,
-    css    : [
-        { src: '~/assets/normalize.scss', lang: 'scss' },
-    ],
+
     plugins: [
         { src: '~/plugins/axios' },
         { src: '~/plugins/api' },
         { src: '~/plugins/vuelidate' },
 
     ],
-    buildModules: [
+
+    css: [
+        { src: '~/assets/styles.scss', lang: 'scss' },
     ],
-    modules: [
-        '@nuxtjs/style-resources',
-        ['@nuxtjs/axios', { proxy: true }],
-        '@nuxtjs/proxy',
-    ],
+
     styleResources: {
         scss: [
             '~/assets/vars.scss',
             '~/assets/mixins.scss',
         ],
     },
+
+    middleware: [
+        'check-auth',
+    ],
+
+    buildModules: [
+    ],
+
+    modules: [
+        '@nuxtjs/style-resources',
+        ['@nuxtjs/axios', { proxy: true }],
+        '@nuxtjs/proxy',
+    ],
+
     babel: {
         presets: ['@nuxt/babel-preset-app'],
     },
+
     build: {
         modern  : true,
         parallel: true,
@@ -53,6 +65,7 @@ export default {
             }
         },
     },
+
     proxy: {
         '/api': {
             target     : 'http://back:7000',

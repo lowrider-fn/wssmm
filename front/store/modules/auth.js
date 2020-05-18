@@ -1,36 +1,39 @@
-// import Api from '@/lib/axios'
-
 const state = {
     isAuth: false,
 }
-
+const getters = {
+    IS_AUTH: state => state.isAuth,
+}
 const actions = {
-    async users({ commit }, data) {
-        try {
-            const res = await this.app.api.users.get()
-            return res
-        } catch (err) {
-            throw err
-        }
-    },
-    async setUsers({ commit }, data) {
-        try {
-            const res = await this.app.api.users.post(data)
-            return res
-        } catch (err) {
-            throw err
-        }
-    },
-    // login: async ({ commit }, data) => {
-    //     const { res, err } = await new Api().post('/login', data)
-
-    //     if (res) {
-    //         commit('LOGIN')
+    // async users({ commit }, data) {
+    //     try {
+    //         const res = await this.app.api.users.get()
     //         return res
+    //     } catch (err) {
+    //         throw err
     //     }
-    //     console.error(`${err}`)
-    //     throw err
     // },
+    // async setUsers({ commit }, data) {
+    //     try {
+    //         const res = await this.app.api.users.post(data)
+    //         return res
+    //     } catch (err) {
+    //         throw err
+    //     }
+    // },
+    async login(store, data) {
+        try {
+            const res = await this.app.api.auth.login(data)
+            if (res) {
+                store.commit('LOGIN')
+                return res
+            }
+        } catch (err) {
+            store.dispatch('addErr', err.msg, { root: true })
+            console.error(`${err}`)
+            throw err
+        }
+    },
 
     // registration: async ({ commit }, data) => {
     //     const { res, err } = await new Api().post('/registration', data)
@@ -53,12 +56,18 @@ const actions = {
     //     throw err
     // },
 
-    // checkLogin: async ({ commit }) => {
-    //     const { res, err } = await new Api().get('/check')
-    //     if (res) {
-    //         commit('LOGIN')
-    //     }
-    // },
+    async checkAuth(store) {
+        try {
+            const res = await this.app.api.auth.check()
+            if (res) {
+                store.commit('LOGIN')
+                return res
+            }
+        } catch (err) {
+            console.error(`${err}`)
+            throw err
+        }
+    },
     // adminLogin: async ({ commit }, data) => {
     //     const { res, err } = await new Api().post('/admin-login', data)
 
@@ -74,10 +83,6 @@ const actions = {
 const mutations = {
     LOGIN : state => state.isAuth = true,
     LOGOUT: state => state.isAuth = false,
-}
-
-const getters = {
-    isAuth: state => state.isAuth,
 }
 
 export default {

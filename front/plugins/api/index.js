@@ -1,8 +1,8 @@
-import { users } from './users'
+import { auth } from './auth'
 
 export default ({ app }, inject) => {
     const api = () => ({
-        users: users(app.$axios),
+        auth: auth(app.$axios),
     })
 
     app.api = api()

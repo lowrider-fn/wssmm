@@ -7,7 +7,7 @@ const cookieConfig = {
     httpOnly: true,
     // secure  : true,
     expires : false,
-    // signed  : true,
+    signed  : true,
 }
 
 module.exports = (app, users, config) => {
@@ -17,7 +17,7 @@ module.exports = (app, users, config) => {
             if (req.cookies.test) {
                 next()
             } else {
-                res.status(200).send({ err: 'Access Error' })
+                res.status(500).send({ message: 'Ошибка доступа' })
             }
         },
         (req, res) => {
@@ -27,7 +27,7 @@ module.exports = (app, users, config) => {
                 if (results.length > 0) {
                     res.status(200).send('OK')
                 } else {
-                    res.status(200).send({ err: 'User not found' })
+                    res.status(500).send({ message: 'Пользователь не найден' })
                 }
             })
         })
@@ -36,7 +36,7 @@ module.exports = (app, users, config) => {
         (req, res, next) => {
             console.log('/login:', req.cookie)
             if (req.cookies.test) {
-                res.status(200).send({ err: 'You are already logged in' })
+                res.status(500).send({ message: 'Вход уже совершен' })
             } else {
                 next()
             }
@@ -50,15 +50,15 @@ module.exports = (app, users, config) => {
 
                         res.status(200).cookie('test', token, cookieConfig).send('OK')
                     } else {
-                        res.status(200).send({ err: 'Passwords do not match' })
+                        res.status(500).send({ message: 'Пароли не совпадают' })
                     }
                 } else {
-                    res.status(200).send({ err: 'User not found' })
+                    res.status(500).send({ message: 'Пользователь не найден' })
                 }
             })
         })
 
-    app.post('/logout',
+    app.get('/logout',
         (req, res, next) => {
             console.log('/logout:', req.cookies.test)
             if (req.cookies.test) {
@@ -76,7 +76,7 @@ module.exports = (app, users, config) => {
             })
         })
 
-    app.post('/registration',
+    app.post('/register',
         (req, res, next) => {
             console.log('/registration:', req.body)
             if (req.cookies.test) {

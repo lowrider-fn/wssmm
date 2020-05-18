@@ -21,9 +21,10 @@ export default function ({ $axios }) {
     $axios.interceptors.response.use((res) => {
         if (res.error) {
             const err = {
-                code: res.error.code || -1,
-                msg : res.error.message || '',
+                code: res.error.response.status || -1,
+                msg : res.error.response.data.message || res.error.message,
             }
+            // console.log(err)
 
             return Promise.reject(err)
         }

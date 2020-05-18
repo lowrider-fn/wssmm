@@ -1,31 +1,79 @@
 <template>
-    <main id="app">
-        <Header :links="links" />
-        <nuxt />
-        <Footer />
-    </main>
+    <section id="app">
+        <Header :links="links" :isAuth="IS_AUTH" />
+        <main class="main">
+            <nuxt />
+        </main>
+        <NotifList />
+        <Footer :links="links" :isAuth="IS_AUTH" />
+    </section>
 </template>
 <script>
-import Header from '~/components/Header'
-import Footer from '~/components/Footer'
+import Header from '~/components/blocks/header'
+import Footer from '~/components/blocks/footer'
+import NotifList from '~/components/common/notif/notif-list'
+
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name      : 'DefaultLayout',
     components: {
         Header,
         Footer,
+        NotifList,
     },
+    computed: {
+        ...mapGetters([
+            'IS_AUTH',
+        ]),
+        links() {
+            return [
+                {
+                    href  : '/',
+                    text  : 'Продукты',
+                    isShow: true,
+                    action: () => {},
+                },
+                {
+                    href  : '/auth',
+                    text  : 'Авторизация',
+                    isShow: !this.IS_AUTH,
+                    action: () => {},
+                },
+                {
+                    href  : '/auth/register',
+                    text  : 'Регистрация',
+                    isShow: !this.IS_AUTH,
+                    action: () => {},
+                },
+                {
+                    href  : '/auth',
+                    text  : 'Выйти',
+                    isShow: this.IS_AUTH,
+                    action: e => this.$emit('logout'),
+                },
+            ]
+        },
+    },
+    methods: {
+        ...mapActions([
+            'logout',
+        ]),
+        logoutHanler() {
+            this.logout()
+                .then((res) => {
+                    this.$router.push({ name: 'Auth' })
+                })
+                .catch((err) => {
+                    console.error(`${err}`)
+                })
+        },
 
-    data() {
-        return {
-            links: [
-                { text: 'Услуги', to: '/services' },
-                { text: 'Портфолио', to: '/portfolio' },
-                { text: 'О компании', to: '/about' },
-                { text: 'Блог', to: '/blog' },
-                { text: 'Контакты', to: '/contact' },
-            ],
-        }
     },
 }
 </script>
+<style lang="scss" scoped>
+.main {
+    min-height: 100vh;
+}
+</style>

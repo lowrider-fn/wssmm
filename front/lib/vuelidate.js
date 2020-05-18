@@ -29,10 +29,10 @@ const vuelidate = {
         })
     },
 
-    errTexts() {
+    errLogin() {
         return this.transport({
             required : 'Заполните поле',
-            minLength: 'Введите не менее 6 символов',
+            minLength: 'Введите не менее 4 символов',
             maxLength: 'Введите не более 32 символов',
         })
     },
@@ -40,8 +40,7 @@ const vuelidate = {
     errPwd() {
         return this.transport({
             required : 'Введите пароль',
-            minLength: 'Введите не менее 6 символов',
-            maxLength: 'Введите не более 32 символов',
+            minLength: 'Введите не менее 8 символов',
             pwd      : 'Обязательно наличие цифр и символов',
         })
     },

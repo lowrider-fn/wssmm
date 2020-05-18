@@ -1,23 +1,23 @@
 @mixin tablet {
-    @media ( min-width: 768px ) and ( max-width: 1023px ) {
+    @media ( min-width: 76.8rem ) and ( max-width: 102.3rem ) {
         @content;
     }
 }
 
 @mixin tablet-mini {
-    @media ( min-width: 500px ) and ( max-width: 767px ) {
+    @media ( min-width: 50rem ) and ( max-width: 76.7rem ) {
         @content;
     }
 }
 
 @mixin mobile {
-    @media ( max-width: 499px ) {
+    @media ( max-width: 49.9rem ) {
         @content;
     }
 }
 
 @mixin hover-focus {
-    @media screen and ( min-width: 1025px ) {
+    @media screen and ( min-width: 102.5rem ) {
 
         &:focus {
             @content;
@@ -29,10 +29,27 @@
     }
 }
 @mixin hover {
-    @media screen and ( min-width: 1025px ) {
+    @media screen and ( min-width: 102.5rem ) {
 
         &:hover {
             @content;
         }
     }
+}
+@mixin inner {
+    position: relative;
+
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem;
+}
+
+
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }

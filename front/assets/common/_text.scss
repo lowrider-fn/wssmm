@@ -1,0 +1,30 @@
+@mixin common-text {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.h1 {
+    @include common-text;
+    @include mobile {
+        font-size: 3rem;
+    }
+}
+
+.h2 {
+    @include common-text;
+}
+
+.h3 {
+    @include common-text;
+}
+
+.text {
+    @include common-text;
+}
+
+.text-small {
+    @include common-text;
+    color: $grey;
+    font-size: 1.4rem;
+}

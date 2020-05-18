@@ -1,14 +1,16 @@
 <template>
     <section class="error">
-        <div class="error__inner">
-            <h1 class="error__title">
-                {{ error.statusCode }}
-            </h1>
-            <h2 class="error__info">
-                {{ error.message }}
+        <h1 class="error__title">
+            {{ error.statusCode }}
+        </h1>
+        <div class="error__info">
+            <h2 class="h2 error__text">
+                {{ error.statusCode === 404 ? 'Страница не найдена!' :'Ошибка!' }}
             </h2>
-            <nuxt-link v-if="error.statusCode === 404"
-                       class="error__link"
+            <p class="text error__text">
+                {{ error.message }}
+            </p>
+            <nuxt-link class="link-nav"
                        to="/"
             >
                 На главную
@@ -27,32 +29,70 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .error {
-    width: 100%;
-    max-width: 120rem;
-    height: 100%;
-    margin: 0 auto;
+    @include inner;
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: min-content 40rem;
+    justify-content: center;
     padding: 10% 1.5rem;
 }
 
-.error__inner {
+// .error__inner {
+
+// }
+
+.error__info {
     display: grid;
-    justify-content: center;
+    grid-gap: 1.5rem;
+    grid-template-rows: repeat(3,min-content);
+    align-content: space-between;
+    justify-content: start;
 }
 
 .error__title {
-    margin-bottom: 3rem;
-
-    font-size: 10rem;
+    font-size: 15rem;
+    line-height: 0.8;
 }
 
-.error__info {
-    color: #9AABB1;
-    font-weight: 300;
+.error__text {
+    color: $grey;
+
+    &.text {
+        margin-bottom: 20px;
+    }
 }
 
-.error__link {
-    cursor: pointer;
+@mixin link {
+    color: $blue;
+    font-size: 1.6rem;
+    line-height: 1.2;
+
+    @include hover-focus {
+        opacity: 0.6;
+    }
+}
+
+.link {
+    @include link;
+
+}
+
+.link-nav {
+    @include link;
+    display: inline-block;
+
+    color: $blue;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @include mobile {
+        padding: 1rem;
+    }
+
+    &:active {
+        opacity: 0.6;
+    }
 }
 </style>

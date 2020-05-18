@@ -1,7 +1,29 @@
 {
-  "path-intellisense.mappings": {
-    "@": "${workspaceRoot}/front/src",
-    "~": "${workspaceRoot}/front/src"
+  "bracket-pair-colorizer-2.colors": [
+    "#fff",
+    "#FF5252",
+    "#4CAF50",
+    "#FB8C00",
+    "#5CBBF6",
+  ],
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "name": {
+        "underline": "#fff"
+      }
+    }
+  },
+  "workbench.colorTheme": "Monokai",
+  "window.zoomLevel": 1,
+  "javascript.validate.enable": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  // "editor.formatOnSave": true,
+  // "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
   "eslint.validate": [
     "javascript",
@@ -11,12 +33,28 @@
     "typescript",
     "typescriptreact",
   ],
-  "javascript.validate.enable": false,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+  "git.confirmSync": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "timeline.excludeSources": [
+    "git-history"
+  ],
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": true
   },
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "dart.debugExternalLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.flutterSdkPath": "/Users/lowrider-fn/Documents/dev/flutter",
+  "dart.openDevTools": "flutter",
+  "flutterStylizer.memberOrdering": [
+    "public-constructor",
+    "named-constructors",
+    "public-static-variables",
+    "public-instance-variables",
+    "private-static-variables",
+    "private-instance-variables",
+    "public-override-methods",
+    "public-other-methods",
+    "build-method",
+  ],
 }
