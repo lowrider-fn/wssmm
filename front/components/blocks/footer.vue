@@ -55,37 +55,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin link {
-    color: $blue;
-    font-size: 1.6rem;
-    line-height: 1.2;
-
-    @include hover-focus {
-        opacity: 0.5;
-    }
-}
-
-.link {
-    @include link;
-}
-
 .footer {
-    box-shadow: 0 0 1rem rgba(0,0,0,0.5);
-}
-
-.link-nav {
-    display: inline-block;
-    padding: 1rem 0.5rem;
-
-    color: $blue;
-    font-weight: 500;
-    text-transform: uppercase;
-
-    @include link;
-
-    &:active {
-        opacity: 0.6;
-    }
+    box-shadow: 0 0 1rem $overlay;
 }
 
 .footer__inner {

@@ -18,5 +18,7 @@
     "sass-loader": "^8.0.2",
     "vuelidate": "^0.7.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "v-mask": "^2.1.0"
+  }
 }

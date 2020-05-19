@@ -12,8 +12,8 @@ export const auth = ({ $get: get, $post: post }) => ({
         const result = await get('/logout')
         return result
     },
-    async rester(data) {
-        const result = await post('/restration', data)
+    async register(data) {
+        const result = await post('/register', data)
         return result
     },
     async forgotPwd(data) {

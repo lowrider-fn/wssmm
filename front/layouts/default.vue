@@ -23,7 +23,7 @@ export default {
         NotifList,
     },
     computed: {
-        ...mapGetters([
+        ...mapGetters('auth', [
             'IS_AUTH',
         ]),
         links() {

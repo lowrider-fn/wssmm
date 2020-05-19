@@ -48,20 +48,20 @@ export default {
     font-size: 14px;
     text-transform: uppercase;
 
-    border: solid 1px transparent;
+    border: solid $bw transparent;
 
     &:disabled {
         @include hover-focus {
             color: $grey;
 
             background: $white;
-            border: solid 1px $grey;
+            border: solid $bw $grey;
         }
 
         color: $grey;
 
         background: $white;
-        border: solid 1px $grey;
+        border: solid $bw $grey;
     }
 }
 
@@ -71,18 +71,18 @@ export default {
         color: $white;
 
         background: $blue;
-        border: solid 1px $blue;
+        border: solid $bw $blue;
     }
 
     color: $blue;
 
-    border: solid 1px $blue;
+    border: solid $bw $blue;
 
     &:active {
         color: $white;
 
         background: $blue;
-        border: solid 1px $blue;
+        border: solid $bw $blue;
     }
 }
 
@@ -92,18 +92,18 @@ export default {
         color: $white;
 
         background: $red;
-        border: solid 1px $red;
+        border: solid $bw $red;
     }
 
     color: $red;
 
-    border: solid 1px $red;
+    border: solid $bw $red;
 
     &:active {
         color: $white;
 
         background: $red;
-        border: solid 1px $red;
+        border: solid $bw $red;
     }
 }
 
@@ -113,18 +113,18 @@ export default {
         color: $white;
 
         background: $green;
-        border: solid 1px $green;
+        border: solid $bw $green;
     }
 
     color: $green;
 
-    border: solid 1px $green;
+    border: solid $bw $green;
 
     &:active {
         color: $white;
 
         background: $green;
-        border: solid 1px $green;
+        border: solid $bw $green;
     }
 }
 
@@ -134,46 +134,46 @@ export default {
 
     font-size: 13px;
 
-    border: solid 1px transparent;
+    border: solid $bw transparent;
 
 }
 
 .btn-link-orange {
     @include btn-link;
     @include hover-focus {
-        border: solid 1px $orange;
+        border: solid $bw $orange;
     }
 
     color: $orange;
 
     &:active {
-        border: solid 1px $orange;
+        border: solid $bw $orange;
     }
 }
 
 .btn-link-red {
     @include  btn-link;
     @include hover-focus {
-        border: solid 1px $red;
+        border: solid $bw $red;
     }
 
     color: $red;
 
     &:active {
-        border: solid 1px $red;
+        border: solid $bw $red;
     }
 }
 
 .btn-link-green {
     @include  btn-link;
     @include hover-focus {
-        border: solid 1px $green;
+        border: solid $bw $green;
     }
 
     color: $green;
 
     &:active {
-        border: solid 1px $green;
+        border: solid $bw $green;
     }
 }
 </style>

@@ -1,24 +1,23 @@
 <template>
-    <form
-        class="auth__form"
-    >
-        <Field v-model="$v.form.login.$model"
-               placeholder="Имя"
-               label="Имя"
-               :value="$v.form.login.$model"
-               :isErr="vuelidate.isError($v.form.login)"
-               :errText="vuelidate.errText($v.form.login)"
+    <form class="auth__form">
+        <Field v-model="$v.form.email.$model"
+               placeholder="Введите email"
+               label="Email"
+               :value="$v.form.email.$model"
+               :isErr="vuelidate.isError($v.form.email)"
+               :errText="vuelidate.errText($v.form.email)"
         />
         <Field v-model="$v.form.pwd.$model"
-               :label="'Your password'"
+               label="Пароль"
                :type="'password'"
                :value="$v.form.pwd.$model"
-               :isErr="vuelidate.isError($v.form.name)"
-               :errText="vuelidate.errText($v.form.name)"
-               :placeholder="'Password'"
+               :isErr="vuelidate.isError($v.form.pwd)"
+               :errText="vuelidate.errText($v.form.pwd)"
+               :placeholder="'Введите пароль'"
+               :isPwd="true"
         />
         <div class="auth__btn">
-            <Btn :disabled="$v.form.$invalid"
+            <Btn :disabled="$v.form.$invalid || IS_LOAD"
                  @click="send()"
             >
                 Войти
@@ -30,8 +29,8 @@
 <script>
 import Field from '~/components/common/field'
 import Btn from '~/components/common/btn'
-import { mapActions } from 'vuex'
 
+import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'
 
 export default {
@@ -47,46 +46,45 @@ export default {
         return {
             vuelidate,
             form: {
-                login: '',
+                email: '',
                 pwd  : '',
             },
         }
     },
+
     validations: {
         form: {
             required: vuelidate.required,
-            login   : {
-                required : vuelidate.required,
-                maxLength: vuelidate.maxLength(32),
-                minLength: vuelidate.minLength(4),
-                $err     : vuelidate.errLogin(),
+            email   : {
+                required: vuelidate.required,
+                email   : vuelidate.email,
+                $err    : vuelidate.errEmail(),
             },
             pwd: {
                 required : vuelidate.required,
                 minLength: vuelidate.minLength(8),
+                pwd      : vuelidate.checkPwd,
                 $err     : vuelidate.errPwd(),
             },
         },
 
     },
+    computed: {
+        ...mapGetters('auth', [
+            'IS_LOAD',
+        ]),
+    },
     methods: {
         emitHandler() {
             if (!this.$v.form.$invalid) this.$emit('send', this.form)
         },
-        ...mapActions([
+        ...mapActions('auth', [
             'login',
         ]),
         send(form) {
             if (!this.$v.form.$invalid) {
                 this.login(form)
-                    .then((data) => {
-                        this.err = ''
-                        this.$route.redirect('/')
-                    })
-                    .catch((err) => {
-                        this.err = err
-                        console.error(`${err}`)
-                    })
+                    .then(() => this.$router.push('/'))
             }
         },
     },

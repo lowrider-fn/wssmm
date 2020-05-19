@@ -18,10 +18,10 @@ export default {
         { src: '~/plugins/axios' },
         { src: '~/plugins/api' },
         { src: '~/plugins/vuelidate' },
+        { src: '~/plugins/v-mask' },
 
     ],
-    order: 'presetEnvAndCssnanoLast',
-    css  : [
+    css: [
         { src: '~/assets/styles.scss', lang: 'scss' },
     ],
 
@@ -53,7 +53,6 @@ export default {
         modern  : true,
         parallel: true,
         postcss : {
-
             preset: {
                 autoprefixer: {
                     grid: 'autoplace',

@@ -1,10 +1,8 @@
 
 const checkAuth = async ({ store, redirect, route }) => {
-    console.log(route)
-
-    await store.dispatch('checkAuth')
+    store.dispatch('auth/checkAuth')
         .then(e => console.log('midl res', e))
-        .catch(e => redirect('/auth/register'))
+        .catch(e => redirect('/auth'))
 }
 
 export default checkAuth
