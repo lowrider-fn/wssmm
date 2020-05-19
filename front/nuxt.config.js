@@ -20,8 +20,8 @@ export default {
         { src: '~/plugins/vuelidate' },
 
     ],
-
-    css: [
+    order: 'presetEnvAndCssnanoLast',
+    css  : [
         { src: '~/assets/styles.scss', lang: 'scss' },
     ],
 
@@ -53,9 +53,10 @@ export default {
         modern  : true,
         parallel: true,
         postcss : {
+
             preset: {
                 autoprefixer: {
-                    grid: true,
+                    grid: 'autoplace',
                 },
             },
         },

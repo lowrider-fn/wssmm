@@ -34,7 +34,7 @@ export default {
  <style lang="scss" scoped>
 .notif {
     display: grid;
-    grid-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
     grid-template-columns: 3rem auto;
     align-items: center;
     width: 30rem;

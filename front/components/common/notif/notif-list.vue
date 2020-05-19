@@ -38,6 +38,5 @@ export default {
     z-index: $ziMax;
 
     display: grid;
-    grid-gap: 1rem;
 }
 </style>

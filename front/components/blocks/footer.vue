@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import Btn from '~/components/common/Btn'
+import Btn from '~/components/common/btn'
 
 export default {
     name      : 'Footer',
@@ -100,16 +100,10 @@ export default {
     }
 }
 
-.footer__list {
-    display: grid;
-    grid-gap: 1rem;
-    grid-column: repeat(3,min-content);
-}
-
 .footer__btns {
     display: grid;
-    grid: repeat(2,min-content)/auto;
-    grid-gap: 2rem;
+    grid-row-gap: 2rem;
+    grid-template-rows: repeat(2,min-content);
     justify-content: top;
 }
 

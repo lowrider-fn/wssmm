@@ -33,7 +33,7 @@ export default {
 .error {
     @include inner;
     display: grid;
-    grid-gap: 3rem;
+    grid-column-gap: 3rem;
     grid-template-columns: min-content 40rem;
     justify-content: center;
     padding: 10% 1.5rem;
@@ -45,7 +45,7 @@ export default {
 
 .error__info {
     display: grid;
-    grid-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
     grid-template-rows: repeat(3,min-content);
     align-content: space-between;
     justify-content: start;
