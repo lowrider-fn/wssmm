@@ -8,8 +8,9 @@
                 >
                     <router-link v-if="link.isShow"
                                  class="link-nav"
+                                 :event="link.event"
                                  :to="link.href"
-                                 @click.native="link.action($event);"
+                                 @click.native.prevent="link.action();"
                     >
                         {{ link.text }}
                     </router-link>
@@ -24,8 +25,8 @@ export default {
     name : 'Header',
     props: {
         isAuth: {
-            type    : Boolean,
-            requared: true,
+            type: [Boolean, null],
+
         },
         links: {
             type    : Array,

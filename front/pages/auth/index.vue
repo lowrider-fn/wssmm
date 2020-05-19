@@ -84,7 +84,7 @@ export default {
         send(form) {
             if (!this.$v.form.$invalid) {
                 this.login(form)
-                    .then(() => this.$router.push('/'))
+                    .finally(() => this.$router.push('/'))
             }
         },
     },

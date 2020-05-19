@@ -31,10 +31,12 @@ export default {
             '~/assets/mixins.scss',
         ],
     },
+    router: {
+        middleware: [
+            'check-auth',
+        ],
 
-    middleware: [
-        'check-auth',
-    ],
+    },
 
     buildModules: [
     ],

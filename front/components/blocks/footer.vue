@@ -9,8 +9,9 @@
                     >
                         <router-link v-if="link.isShow"
                                      class="link-nav"
+                                     :event="link.event"
                                      :to="link.href"
-                                     @click.native="link.action();"
+                                     @click.native.prevent="link.action();"
                         >
                             {{ link.text }}
                         </router-link>
@@ -43,8 +44,7 @@ export default {
     },
     props: {
         isAuth: {
-            type    : Boolean,
-            required: true,
+            type: [Boolean, null],
         },
         links: {
             type    : Array,

@@ -1,5 +1,5 @@
 const state = {
-    isAuth: false,
+    isAuth: null,
     isLoad: false,
 }
 
@@ -90,6 +90,8 @@ const actions = {
     },
 
     async checkAuth(store) {
+        store.commit('TOGGLE_IS_LOAD')
+
         try {
             const res = await this.app.api.auth.check()
             if (res) {
@@ -99,6 +101,8 @@ const actions = {
         } catch (err) {
             console.error(`${err}`)
             throw err
+        } finally {
+            store.commit('TOGGLE_IS_LOAD')
         }
     },
     // adminLogin: async ({ commit }, data) => {

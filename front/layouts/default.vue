@@ -1,11 +1,17 @@
 <template>
     <section id="app">
-        <Header :links="links" :isAuth="IS_AUTH" />
+        <Header :links="links"
+                :isAuth="IS_AUTH"
+                @logout="logout()"
+        />
         <main class="main">
             <nuxt />
         </main>
         <NotifList />
-        <Footer :links="links" :isAuth="IS_AUTH" />
+        <Footer :links="links"
+                :isAuth="IS_AUTH"
+                @logout="logout()"
+        />
     </section>
 </template>
 <script>
@@ -31,6 +37,7 @@ export default {
                 {
                     href  : '/',
                     text  : 'Продукты',
+                    event : 'click',
                     isShow: true,
                     action: () => {},
                 },
@@ -38,35 +45,34 @@ export default {
                     href  : '/auth',
                     text  : 'Авторизация',
                     isShow: !this.IS_AUTH,
+                    event : 'click',
                     action: () => {},
                 },
                 {
                     href  : '/auth/register',
                     text  : 'Регистрация',
                     isShow: !this.IS_AUTH,
+                    event : 'click',
                     action: () => {},
                 },
                 {
                     href  : '/auth',
                     text  : 'Выйти',
+                    event : '',
                     isShow: this.IS_AUTH,
-                    action: e => this.$emit('logout'),
+                    action: e => this.logoutHanler(e),
                 },
             ]
         },
     },
     methods: {
-        ...mapActions([
+        ...mapActions('auth', [
             'logout',
+            'checkAuth',
         ]),
         logoutHanler() {
             this.logout()
-                .then((res) => {
-                    this.$router.push({ name: 'Auth' })
-                })
-                .catch((err) => {
-                    console.error(`${err}`)
-                })
+                .then(res => this.$router.push('/auth'))
         },
 
     },
@@ -74,6 +80,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
+    height: 100%;
     min-height: 100vh;
 }
 </style>

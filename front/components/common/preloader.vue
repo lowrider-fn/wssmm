@@ -1,6 +1,6 @@
 <template>
     <div class="preloader">
-        <svg id="Layer_1"
+        <svg id="Layer_1" class="preloader__icon"
              version="1.1"
              xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -80,13 +80,13 @@
 <style lang="scss" scoped>
 .preloader {
 
-    position: absolute;
+    position: fixed;
 
     top: 0;
 
     left: 0;
 
-    z-index: 1;
+    z-index: $ziMax;
 
     display: flex;
 
@@ -94,12 +94,18 @@
 
     justify-content: center;
 
-    width: 100%;
+    width: 100vw;
 
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
 
     background: $white;
 
     transition: all 0.3 linear;
+}
+
+.preloader__icon {
+    width: 20%;
+    height: 20%;
 }
 </style>
