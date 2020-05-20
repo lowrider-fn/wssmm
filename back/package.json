@@ -8,14 +8,13 @@
   },
   "author": "lowrider-fn",
   "dependencies": {
-    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.4",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "bcrypt": "^3.0.6",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.3.2",
-    "monk": "^7.1.2",
-    "nodemon": "^2.0.2"
+    "mongodb": "^3.5.7",
+    "nodemon": "^2.0.4"
   }
 }

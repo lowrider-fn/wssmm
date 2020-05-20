@@ -5,7 +5,8 @@
             <span class="checkbox__wrap"
                   :class="{'error':isErr}"
             >
-                <input class="checkbox__inp"
+                <input :id="id"
+                       class="checkbox__inp"
                        type="checkbox"
                        :checked="checked"
                        @input="$emit('input', $event.target.checked)"
@@ -28,7 +29,7 @@
                     </svg>
                 </span>
             </span>
-            <slot></slot>
+            <label :for="id"><slot></slot></label>
         </div>
         <p v-if="isErr"
            class="checkbox__error"
@@ -44,12 +45,8 @@ export default {
     name : 'Checkbox',
     props: {
         checked: {
-            type     : Boolean,
-            reequired: true,
-        },
-        validate: {
-            type   : Object,
-            default: null,
+            type    : Boolean,
+            required: true,
         },
         isErr: {
             type   : Boolean,
@@ -59,6 +56,11 @@ export default {
             type   : String,
             default: '',
         },
+    },
+    data() {
+        return {
+            id: `chb${(~~(Math.random() * 1e8)).toString(18)}`,
+        }
     },
 }
 </script>

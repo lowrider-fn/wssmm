@@ -32,28 +32,27 @@
         <Field v-model="$v.form.pwd.$model"
                label="Пароль"
                :type="'password'"
-               :value="$v.form.pwd.$model"
+               :value="'$v.form.pwd.$model'"
                :isErr="vuelidate.isError($v.form.pwd)"
                :errText="vuelidate.errText($v.form.pwd)"
                :placeholder="'Введите пароль'"
                :isPwd="true"
         />
-        <Field v-model="$v.form.pwd_confirm.$model"
+        <Field v-model="$v.form.pwdConfirm.$model"
                label="Подтверждение пароля"
                :type="'password'"
-               :value="$v.form.pwd_confirm.$model"
-               :isErr="vuelidate.isError($v.form.pwd_confirm)"
-               :errText="vuelidate.errText($v.form.pwd_confirm)"
+               :value="$v.form.pwdConfirm.$model"
+               :isErr="vuelidate.isError($v.form.pwdConfirm)"
+               :errText="vuelidate.errText($v.form.pwdConfirm)"
                :placeholder="'Повторите пароль'"
                :isPwd="true"
         />
         <Checkbox v-model="$v.form.accept.$model"
-                  label="Я ознакомился с политикой"
                   :checked="$v.form.accept.$model"
                   :isErr="vuelidate.isError($v.form.accept)"
                   :errText="vuelidate.errText($v.form.accept)"
         >
-            <label for="">Я ознакомился с <a href="#" target="_blank" class="link">политикой</a></label>
+            Я ознакомился с <a href="#" target="_blank" class="link">политикой</a>
         </Checkbox>
         <div class="auth__btn">
             <Btn :disabled="$v.form.$invalid"
@@ -86,13 +85,13 @@ export default {
         return {
             vuelidate,
             form: {
-                name       : '',
-                surname    : '',
-                phone      : '',
-                email      : '',
-                pwd        : '',
-                pwd_confirm: '',
-                accept     : false,
+                name      : '',
+                surname   : '',
+                phone     : '',
+                email     : '',
+                pwd       : '',
+                pwdConfirm: '',
+                accept    : false,
             },
         }
     },
@@ -128,9 +127,9 @@ export default {
                     pwd      : vuelidate.checkPwd,
                     $err     : vuelidate.errPwd(),
                 },
-                pwd_confirm: {
+                pwdConfirm: {
                     required: vuelidate.required,
-                    equal   : val => val === this.form.pwd,
+                    equal   : (val) => val === this.form.pwd,
                     $err    : vuelidate.errConfirmPwd(),
                 },
                 accept: {
@@ -150,15 +149,10 @@ export default {
         ...mapActions('auth', [
             'register',
         ]),
-        send(form) {
+        send() {
             if (!this.$v.form.$invalid) {
-                this.register(form)
-                    .then((data) => {
-                        this.$route.redirect('/')
-                    })
-                    .catch((err) => {
-                        console.error(`${err}`)
-                    })
+                this.register(this.form)
+                    .then(() => this.$router.push('/'))
             }
         },
     },

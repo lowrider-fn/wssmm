@@ -2,15 +2,18 @@
     <section id="app">
         <Header :links="links"
                 :isAuth="IS_AUTH"
-                @logout="logout()"
         />
         <main class="main">
             <nuxt />
         </main>
         <NotifList />
+        <Confirm :isShow="isShow"
+                 :isHide.sync="isShow"
+                 title="Вы действительно хотите выйти?"
+                 @accept="logout()"
+        />
         <Footer :links="links"
                 :isAuth="IS_AUTH"
-                @logout="logout()"
         />
     </section>
 </template>
@@ -18,7 +21,7 @@
 import Header from '~/components/blocks/header'
 import Footer from '~/components/blocks/footer'
 import NotifList from '~/components/common/notif/notif-list'
-
+import Confirm from '~/components/common/confirm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -27,6 +30,12 @@ export default {
         Header,
         Footer,
         NotifList,
+        Confirm,
+    },
+    data() {
+        return {
+            isShow: false,
+        }
     },
     computed: {
         ...mapGetters('auth', [
@@ -60,7 +69,7 @@ export default {
                     text  : 'Выйти',
                     event : '',
                     isShow: this.IS_AUTH,
-                    action: e => this.logoutHanler(e),
+                    action: this.showConfirm,
                 },
             ]
         },
@@ -72,9 +81,11 @@ export default {
         ]),
         logoutHanler() {
             this.logout()
-                .then(res => this.$router.push('/auth'))
+                .then(() => this.$router.push('/auth'))
         },
-
+        showConfirm() {
+            this.isShow = true
+        },
     },
 }
 </script>

@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             isShow: false,
+            id    : `field${(~~(Math.random() * 1e8)).toString(18)}`,
         }
     },
     computed: {
@@ -57,20 +58,25 @@ export default {
             class: ['field', { error: this.isErr }],
         },
         [
-            createElement('label', { class: 'field__label ' }, this.label),
+            createElement('label', {
+                class: 'field__label ',
+                attrs: { for: this.id },
+            }, this.label),
             createElement('div', {
                 class: 'field__box',
             }, [
                 createElement(this.tag, {
                     class: ['field__area', `field__${this.tag}`, { pr: this.isPwd }],
                     attrs: {
-                        value      : this.value,
+                        id         : this.id,
                         type       : this.setType,
                         placeholder: this.placeholder,
                     },
+                    domProps: {
+                        value: this.value,
+                    },
                     on: {
-                        input: e => this.$emit('input', e.target.value.trim()),
-
+                        input: (e) => this.$emit('input', e.target.value.trim()),
                     },
                 }),
                 this.isPwd && createElement('div', {

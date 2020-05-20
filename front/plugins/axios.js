@@ -15,7 +15,7 @@ export default function ({ $axios }) {
         $axios.defaults.httpsAgent = agent
     }
 
-    $axios.onError(error => ({ error }))
+    $axios.onError((error) => ({ error }))
 
     // eslint-disable-next-line consistent-return
     $axios.interceptors.response.use((res) => {
@@ -37,5 +37,5 @@ export default function ({ $axios }) {
                 },
             }
         }
-    }, err => Promise.reject(err))
+    }, (err) => Promise.reject(err))
 }

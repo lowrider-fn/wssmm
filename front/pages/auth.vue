@@ -12,22 +12,21 @@ import { mapActions } from 'vuex'
 
 export default {
     name      : 'Auth',
-    components: {
-    },
+    middleware: 'non-auth',
     data() {
         return {
             isLogin: true,
-        }
-    },
-    head() {
-        return {
-            title: this.title,
         }
     },
     computed: {
         title() {
             return this.$route.meta.title
         },
+    },
+    head() {
+        return {
+            title: this.title,
+        }
     },
     methods: {
         ...mapActions([
@@ -54,6 +53,7 @@ export default {
 
     border: solid $bw $blue;
     border-radius: $br;
+    box-shadow: $shadow;
 }
 
 .auth__btn {

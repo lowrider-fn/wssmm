@@ -1,7 +1,7 @@
 {
   "name": "gmw",
   "version": "1.0.0",
-  "description": "gmw",
+  "description": "GMW",
   "author": "lowrider-fn",
   "private": true,
   "scripts": {
@@ -25,16 +25,17 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-vue": "^5.2.3",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.1.1",
-    "stylelint": "^11.1.1",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.4",
+    "stylelint": "^13.5.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^4.0.0",
-    "stylelint-scss": "^3.16.0"
+    "stylelint-scss": "^3.17.2",
+    "vue-clickaway": "^2.2.2"
   }
 }

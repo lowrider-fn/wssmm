@@ -38,7 +38,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .header {
-    box-shadow: 0 0 1rem $overlay;
+    box-shadow: $shadow;
 }
 
 .header__inner {

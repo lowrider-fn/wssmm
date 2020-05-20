@@ -81,10 +81,10 @@ export default {
         ...mapActions('auth', [
             'login',
         ]),
-        send(form) {
+        send() {
             if (!this.$v.form.$invalid) {
-                this.login(form)
-                    .finally(() => this.$router.push('/'))
+                this.login(this.form)
+                    .then(() => this.$router.push('/'))
             }
         },
     },

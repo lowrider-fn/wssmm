@@ -38,6 +38,7 @@ export default {
     grid-template-columns: 3rem auto;
     align-items: center;
     width: 30rem;
+    margin-bottom: 1.5rem;
     padding: 1rem;
 
     color: $white;

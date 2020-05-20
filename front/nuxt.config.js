@@ -35,9 +35,11 @@ export default {
         middleware: [
             'check-auth',
         ],
-
     },
-
+    middleware: [
+        'uth',
+        'non-auth',
+    ],
     buildModules: [
     ],
 

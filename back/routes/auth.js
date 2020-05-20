@@ -5,7 +5,7 @@ const jwtSign = (id, secret) => jwt.sign({ id }, secret)
 
 const cookieConfig = {
     httpOnly: true,
-    secure  : true,
+    // secure  : true,
     expires : false,
     // signed  : true,
 }
@@ -38,9 +38,14 @@ module.exports = (app, users, config) => {
 
     app.post('/login',
         (req, res, next) => {
+            console.log('/login:', Object.keys(req.body))
+
             if (req.cookies.gwmc) {
                 res.status(500)
                     .send({ message: 'Вход уже совершен' })
+            } else if (Object.keys(req.body).length === 0) {
+                res.status(500)
+                    .send({ message: 'Данные отсутствуют' })
             } else {
                 next()
             }
@@ -52,7 +57,7 @@ module.exports = (app, users, config) => {
 
                     if (results[0].pwd === req.body.pwd) {
                         const token = jwtSign(results[0].id, config.secret)
-                        results[0].auth_token = token
+                        results[0].authToken = token
                         res.status(200)
                             .cookie('gmwc', token, cookieConfig)
                             .send({ message: 'Вход совершен' })
@@ -93,34 +98,39 @@ module.exports = (app, users, config) => {
 
     app.post('/register',
         (req, res, next) => {
-            console.log('/registration:', req.body)
             if (req.cookies.gmwc) {
                 res.status(500)
                     .send({ message: 'Вход уже совершен' })
+            } else if (Object.keys(req.body).length === 0) {
+                res.status(500)
+                    .send({ message: 'Данные отсутствуют' })
             } else {
                 next()
             }
         },
         (req, res) => {
             const user = req.body
-            const { pwd, pwd_confirm, email } = user
+            const { pwd, pwdConfirm, email } = user
 
-            if (pwd === pwd_confirm) {
+            if (pwd === pwdConfirm) {
                 const id = `f${(~~(Math.random() * 1e8)).toString(16)}`
 
                 const token = jwtSign(id, config.secret)
-                user.auth_token = token
+                user.authToken = token
                 user.id = id
                 users.find({ email }).toArray((err, results) => {
+                    console.log('results', email)
                     if (results.length > 0) {
                         res.status(500)
                             .send({ message: 'Пользователь с такой почтой уже существует' })
                     } else {
                         users.insertOne(user, (error, result) => {
+                            console.log('users', result)
+
                             if (error) {
                                 console.log('error inser database', error)
                                 res.status(500)
-                                    .send({ err: 'There was a problem registering the user' })
+                                    .send({ err: `Error insert db, ${error}` })
                             } else {
                                 res.status(200)
                                     .cookie('gmwc', token, cookieConfig)

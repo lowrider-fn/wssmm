@@ -4,14 +4,14 @@ const state = {
 }
 
 const getters = {
-    IS_AUTH: state => state.isAuth,
-    IS_LOAD: state => state.isLoad,
+    IS_AUTH: (state) => state.isAuth,
+    IS_LOAD: (state) => state.isLoad,
 }
 
 const mutations = {
-    LOGIN         : state => state.isAuth = true,
-    LOGOUT        : state => state.isAuth = false,
-    TOGGLE_IS_LOAD: state => state.isLoad = !state.isLoad,
+    LOGIN         : (state) => state.isAuth = true,
+    LOGOUT        : (state) => state.isAuth = false,
+    TOGGLE_IS_LOAD: (state) => state.isLoad = !state.isLoad,
 }
 
 const actions = {
@@ -99,6 +99,8 @@ const actions = {
                 return res
             }
         } catch (err) {
+            store.commit('LOGOUT')
+
             console.error(`${err}`)
             throw err
         } finally {

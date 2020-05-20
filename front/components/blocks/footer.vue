@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-    box-shadow: 0 0 1rem $overlay;
+    box-shadow: $shadow;
 }
 
 .footer__inner {
