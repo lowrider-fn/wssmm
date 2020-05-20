@@ -46,7 +46,7 @@ export default {
     modules: [
         '@nuxtjs/style-resources',
         ['@nuxtjs/axios', { proxy: true }],
-        '@nuxtjs/proxy',
+        '@nuxtjs/proxy', '@nuxtjs/svg',
     ],
 
     babel: {

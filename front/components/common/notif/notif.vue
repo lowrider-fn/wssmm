@@ -3,9 +3,7 @@
         class="notif"
         @click="$emit('close')"
     >
-        <div class="notif__icon"
-             v-html="icon"
-        ></div>
+        <Icon :name="notif.icon" />
         <p class="text notif__msg">
             {{ notif.msg }}
         </p>
@@ -14,18 +12,16 @@
 
 <script>
 
-import { sprite } from './sprite'
+import Icon from '../icon'
 
 export default {
+    components: {
+        Icon,
+    },
     props: {
         notif: {
             type    : Object,
             required: true,
-        },
-    },
-    computed: {
-        icon() {
-            return sprite[this.notif.icon]
         },
     },
 }

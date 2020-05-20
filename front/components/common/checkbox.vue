@@ -12,21 +12,8 @@
                        @input="$emit('input', $event.target.checked)"
                 >
                 <span class="checkbox__icon-wrap">
-                    <svg class="checkbox__icon"
-                         viewBox="0 0 11 9"
-                         fill="none"
-                    >
-                        <path fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M9.28148 0.63966L4.7848 6.60918L1.58383 3.89026"
-                              fill="black"
-                              fill-opacity="0.01"
-                        />
-                        <path d="M9.28148 0.63966L4.7848 6.60918L1.58383 3.89026"
-                              stroke="white"
-                              stroke-width="2"
-                        />
-                    </svg>
+                    <Icon name="checked" class="checkbox__icon" />
+
                 </span>
             </span>
             <label :for="id"><slot></slot></label>
@@ -40,9 +27,13 @@
 </template>
 
 <script>
+import Icon from './icon'
 
 export default {
-    name : 'Checkbox',
+    name      : 'Checkbox',
+    components: {
+        Icon,
+    },
     props: {
         checked: {
             type    : Boolean,
