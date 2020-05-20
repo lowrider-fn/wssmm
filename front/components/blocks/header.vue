@@ -6,11 +6,10 @@
                     :key="i"
                     class="header__item"
                 >
-                    <router-link v-if="link.isShow"
-                                 class="link-nav"
-                                 :event="link.event"
+                    <router-link class="link-nav"
+                                 :event="link.event === ''?'' : 'click'"
                                  :to="link.href"
-                                 @click.native.prevent="link.action();"
+                                 @click.native.prevent="link.action ? link.action() : null"
                     >
                         {{ link.text }}
                     </router-link>

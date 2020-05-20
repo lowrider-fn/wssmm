@@ -16,10 +16,10 @@ const vuelidate = {
     required,
     minLength,
     maxLength,
-    checked   : val => !!val,
+    checked   : (val) => !!val,
     transport : (msgs, call) => helpers.withParams(msgs, () => (call ? call() : true)),
-    checkPwd  : val => reg.pwd.test(val),
-    checkPhone: val => reg.phone.test(val),
+    checkPwd  : (val) => reg.pwd.test(val),
+    checkPhone: (val) => reg.phone.test(val),
     checkEqual: (val1, val2) => val1 === val2,
     errEmail() {
         return this.transport({
@@ -71,7 +71,7 @@ const vuelidate = {
 
     errKeys(v) {
         const isNotHave = (el, substr) => !el.includes(substr)
-        return Object.keys(v).filter(el => isNotHave(el, '$') && isNotHave(el, 'required'))
+        return Object.keys(v).filter((el) => isNotHave(el, '$') && isNotHave(el, 'required'))
     },
 
     errText(v) {

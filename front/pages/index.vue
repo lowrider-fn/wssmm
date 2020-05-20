@@ -9,7 +9,8 @@
 <script>
 
 export default {
-    name: 'Index',
+    name      : 'Index',
+    middleware: 'non-auth',
     head() {
         return {
             title: 'GMW продукты',

@@ -1,7 +1,7 @@
 
 const auth = async ({ store, redirect }) => {
     if (!store.getters['auth/IS_AUTH']) {
-        redirect('/auth')
+        await redirect({ name: 'auth' })
     }
 }
 

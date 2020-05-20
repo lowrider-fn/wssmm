@@ -2,7 +2,7 @@ const state = {
     notifs: [],
 }
 const getters = {
-    NOTIFS: state => state.notifs,
+    NOTIFS: (state) => state.notifs,
 }
 const mutations = {
     CLOSE(state, id) {
@@ -47,6 +47,7 @@ const actions = {
 
 }
 export default {
+    namespaced: true,
     state,
     mutations,
     actions,

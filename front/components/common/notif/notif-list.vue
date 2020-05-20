@@ -10,7 +10,6 @@
 
 <script>
 import Notif from './notif.vue'
-import notif from './notif-list-store'
 import { mapMutations, mapGetters } from 'vuex'
 
 export default {
@@ -19,13 +18,10 @@ export default {
         Notif,
     },
     computed: {
-        ...mapGetters(['NOTIFS']),
-    },
-    created() {
-        this.$store.registerModule('notif', notif)
+        ...mapGetters('notif', ['NOTIFS']),
     },
     methods: {
-        ...mapMutations(['CLOSE']),
+        ...mapMutations('notif', ['CLOSE']),
     },
 }
 </script>

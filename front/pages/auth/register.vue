@@ -152,7 +152,7 @@ export default {
         send() {
             if (!this.$v.form.$invalid) {
                 this.register(this.form)
-                    .then(() => this.$router.push('/'))
+                    .then(() => this.$router.push({ name: 'profile' }))
             }
         },
     },

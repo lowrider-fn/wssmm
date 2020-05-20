@@ -10,7 +10,7 @@
         <Confirm :isShow="isShow"
                  :isHide.sync="isShow"
                  title="Вы действительно хотите выйти?"
-                 @accept="logout()"
+                 @accept="logoutHanler()"
         />
         <Footer :links="links"
                 :isAuth="IS_AUTH"
@@ -25,7 +25,7 @@ import Confirm from '~/components/common/confirm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    name      : 'DefaultLayout',
+    name      : 'ProfileLayout',
     components: {
         Header,
         Footer,
@@ -44,16 +44,10 @@ export default {
         links() {
             return [
                 {
-                    href: '/',
-                    text: 'Продукты',
-                },
-                {
-                    href: '/auth',
-                    text: 'Авторизация',
-                },
-                {
-                    href: '/auth/register',
-                    text: 'Регистрация',
+                    href  : '/auth',
+                    text  : 'Выйти',
+                    event : '',
+                    action: this.showConfirm,
                 },
             ]
         },
@@ -61,11 +55,10 @@ export default {
     methods: {
         ...mapActions('auth', [
             'logout',
-            'checkAuth',
         ]),
         logoutHanler() {
             this.logout()
-                .then(() => this.$router.push({ name: 'Auth' }))
+                .then(() => this.$router.push({ name: 'auth' }))
         },
         showConfirm() {
             this.isShow = true

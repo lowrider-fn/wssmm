@@ -32,7 +32,7 @@ import Btn from '~/components/common/btn'
 
 import { required, email, helpers } from 'vuelidate/lib/validators'
 
-const err = text => helpers.withParams({ text }, () => true)
+const err = (text) => helpers.withParams({ text }, () => true)
 export default {
     name      : 'AuthLogin',
     components: {
