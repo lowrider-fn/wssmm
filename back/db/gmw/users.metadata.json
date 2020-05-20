@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"gmw.users"}],"uuid":"0e1db859cce24253b341230b859e921a"}

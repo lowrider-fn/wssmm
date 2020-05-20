@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const config = require('./config/config')
 const { MongoClient } = require('mongodb')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const config = require('./config/config')
+const auth = require('./routes/auth')
 
-const port = 7000
 const app = express()
+
 app.use(cors())
 app.use(cookieParser())
 app.use(bodyParser.json())
@@ -18,12 +19,11 @@ const mongo = new MongoClient(config.dbUrl, {
 
 mongo.connect((err, database) => {
     if (err) return console.log(err)
-
     const users = database.db('gmw').collection('users')
 
-    require('./routes')(app, users, config)
+    auth(app, users, config)
 
-    app.listen(port, () => {
-        console.log(`Local: http://localhost:${port}`)
+    app.listen(config.port, () => {
+        console.log(`Local: http://localhost:${config.port}`)
     })
 })
