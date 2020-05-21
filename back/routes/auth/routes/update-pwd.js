@@ -1,25 +1,24 @@
-
-const jwt = require('jsonwebtoken')
-
 module.exports = (app, users, config) => {
-    app.get('/update',
+    app.post('/update',
         (req, res, next) => {
-            if (req.cookies.wssmm) {
-                next()
-            } else {
+            if (Object.keys(req.body).length === 0) {
                 res.status(500)
-                    .send({ message: 'Ошибка доступа' })
+                    .send({ message: 'Данные отсутствуют' })
+            } else {
+                next()
             }
         },
         (req, res) => {
-            const decoded = jwt.verify(req.cookies.wssmm, config.secret)
-            users.find({ id: decoded.id }).toArray((err, results) => {
-                if (results.length > 0) {
+            const { pwd, code } = req.body
+            users.findOne({ restoreCode: code }).then((doc) => {
+                if (doc && pwd !== doc.pwd) {
+                    users.update(doc, { $set: { pwd, restoreCode: null } })
+
                     res.status(200)
-                        .send({ message: 'Вход совершен' })
+                        .send({ message: 'Пароль изменен' })
                 } else {
                     res.status(500)
-                        .send({ message: 'Пользователь не найден' })
+                        .send({ message: 'Веден неверный код' })
                 }
             })
         })

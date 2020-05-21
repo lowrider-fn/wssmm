@@ -1,22 +1,71 @@
 
-const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+
+function sendMail(req, code) {
+    // const setDescription = (text) => (text ? text.replace(/\n/g, ' ') : '')
+    // const setAttachments = (files) => {
+    //     if (files.length > 0) {
+    //         return files.map((file) => {
+    //             const splitedFile = file.split('/')
+    //             return ({ path: `${__dirname}/../../../public/uploads/${splitedFile[splitedFile.length - 1]}` })
+    //         })
+    //     }
+    //     return []
+    // }
+
+    const transporter = nodemailer.createTransport({
+        host  : 'smtp.gmail.com',
+        port  : 465,
+        secure: true, // true for 465, false for other ports
+        auth  : {
+
+        },
+    })
+
+    const mail = {
+        from   : 'With Soul SMM',
+        to     : `${req.body.email}`,
+        subject: 'Востановление пароля',
+        text   : 'text not found. This is ERROR. Call to Viktor OR Sergey.',
+        html   : `<h1>Здраствуйте, код востановления ${code}</h2>,
+<br/><br/>
+<p>With Soul SMM</p>`,
+        // <p>Email: ${req.body.email}</p>
+        // <p>Имя: ${req.body.fio}</p>
+        // <p>Компания: ${req.body.company}</p>
+        // <p>Тел: ${req.body.phone}</p>
+        // <pre>Описание: ${setDescription(req.body.description)}</pre>
+
+        // attachments: setAttachments(req.body.url),
+    }
+
+    transporter.sendMail(mail, (err, info) => {
+        if (err) return console.error(err)
+        console.log(`Email send: ${info.response}`)
+    })
+}
 
 module.exports = (app, users, config) => {
-    app.get('/restore',
+    app.post('/restore',
         (req, res, next) => {
-            if (req.cookies.wssmm) {
-                next()
-            } else {
+            if (Object.keys(req.body).length === 0) {
                 res.status(500)
-                    .send({ message: 'Ошибка доступа' })
+                    .send({ message: 'Данные отсутствуют' })
+            } else {
+                next()
             }
         },
         (req, res) => {
-            const decoded = jwt.verify(req.cookies.wssmm, config.secret)
-            users.find({ id: decoded.id }).toArray((err, results) => {
-                if (results.length > 0) {
+            users.findOne({ email: req.body.email }).then((doc) => {
+                if (doc) {
+                    const code = Math.floor(100000 + Math.random() * 900000).toString()
+
+                    users.update(doc, { $set: { restoreCode: code } })
+
+                    sendMail(req, code)
+
                     res.status(200)
-                        .send({ message: 'Вход совершен' })
+                        .send({ message: `Проверьте вашу почту ${req.body.email}` })
                 } else {
                     res.status(500)
                         .send({ message: 'Пользователь не найден' })

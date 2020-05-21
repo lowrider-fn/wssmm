@@ -56,10 +56,6 @@ export default {
             'logout',
             'checkAuth',
         ]),
-        logoutHanler() {
-            this.logout()
-                .then(() => this.$router.push({ name: 'Auth' }))
-        },
         showConfirm() {
             this.isShow = true
         },

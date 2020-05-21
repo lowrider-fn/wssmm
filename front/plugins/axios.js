@@ -33,7 +33,7 @@ export default function ({ $axios }) {
                 data: {
                     data  : res.data || {},
                     status: res.status || -1,
-                    msg   : res.msg || '',
+                    msg   : res.data.message || '',
                 },
             }
         }

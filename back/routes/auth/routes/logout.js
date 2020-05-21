@@ -11,10 +11,9 @@ module.exports = (app, users, config) => {
         },
         (req, res) => {
             const decoded = jwt.verify(req.cookies.wssmm, config.secret)
-            users.find({ id: decoded.id }).toArray((err, results) => {
-                console.log('logout:', decoded.id, results)
-                if (results.length > 0) {
-                    results[0].token = null
+            users.findOne({ id: decoded.id }).then((doc) => {
+                if (doc) {
+                    users.update(doc, { $set: { authToken: null } })
                     res.status(200)
                         .clearCookie('wssmm')
                         .send({ message: 'Выход совершен' })

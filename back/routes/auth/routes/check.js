@@ -14,7 +14,7 @@ module.exports = (app, users, config) => {
         (req, res) => {
             const decoded = jwt.verify(req.cookies.wssmm, config.secret)
             users.find({ id: decoded.id }).toArray((err, results) => {
-                if (results.length > 0) {
+                if (results[0]) {
                     res.status(200)
                         .send({ message: 'Вход совершен' })
                 } else {

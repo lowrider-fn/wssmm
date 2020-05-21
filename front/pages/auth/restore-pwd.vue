@@ -1,26 +1,17 @@
 <template>
-    <form v-if="$route.meta.title"
-          class="auth__form"
-    >
-        <Field v-model="$v.form.login.$model"
-               v-if="!$route.meta.admin"
+    <form class="auth__form" @submit.prevent>
+        <Field v-model="$v.form.email.$model"
+               placeholder="Введите email"
+               label="Email"
                :value="$v.form.email.$model"
-               :label="'Your login'"
-               :validate="$v.form.email"
-               :placeholder="'Login'"
-        />
-        <Field v-model="$v.form.pwd.$model"
-               :label="'Your password'"
-               :type="'password'"
-               :value="$v.form.pwd.$model"
-               :validate="$v.form.pwd"
-               :placeholder="'Password'"
+               :isErr="vuelidate.isError($v.form.email)"
+               :errText="vuelidate.errText($v.form.email)"
         />
         <div class="auth__btn">
-            <Btn :disabled="$v.form.$invalid"
-                 @click="emitHandler()"
+            <Btn :disabled="IS_LOAD"
+                 @click="send()"
             >
-                Войти
+                Отправить
             </Btn>
         </div>
     </form>
@@ -28,15 +19,16 @@
 
 <script>
 
-// import { required, email, helpers } from 'vuelidate/lib/validators'
+import { mapActions, mapGetters } from 'vuex'
+import vuelidate from '~/lib/vuelidate'
 
 export default {
     name: 'RestorePwd',
     data() {
         return {
+            vuelidate,
             form: {
                 email: '',
-                pwd  : '',
             },
         }
     },
@@ -45,15 +37,31 @@ export default {
         next()
     },
     validations: {
-
+        form: {
+            required: vuelidate.required,
+            email   : {
+                required: vuelidate.required,
+                email   : vuelidate.email,
+                $err    : vuelidate.errEmail(),
+            },
+        },
+    },
+    computed: {
+        ...mapGetters('auth', [
+            'IS_LOAD',
+        ]),
     },
     methods: {
-        emitHandler() {
-            if (!this.$v.form.$invalid) this.$emit('send', this.form)
+        ...mapActions('auth', [
+            'restore',
+        ]),
+        send() {
+            this.$v.form.$touch()
+            if (!this.$v.form.$invalid) {
+                this.restore(this.form)
+                    .then(() => this.$router.push({ name: 'auth-update-pwd' }))
+            }
         },
     },
 }
 </script>
-
-// <style lang="scss" scoped>
-// </style>

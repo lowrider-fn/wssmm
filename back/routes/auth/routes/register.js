@@ -22,34 +22,31 @@ module.exports = (app, users, config) => {
         },
         (req, res) => {
             const user = req.body
-            const { pwd, pwdConfirm, email } = user
+            const id = `f${(~~(Math.random() * 1e8)).toString(16)}`
+            const token = jwtSign(id, config.secret)
 
-            if (pwd === pwdConfirm) {
-                const id = `f${(~~(Math.random() * 1e8)).toString(16)}`
-                const token = jwtSign(id, config.secret)
-                user.authToken = token
-                user.id = id
-                users.find({ email }).toArray((err, results) => {
-                    if (results.length > 0) {
-                        res.status(500)
-                            .send({ message: 'Пользователь с такой почтой уже существует' })
-                    } else {
-                        users.insertOne(user, (error, result) => {
-                            if (error) {
-                                console.log('error inser database', error)
-                                res.status(500)
-                                    .send({ err: `Error insert db, ${error}` })
-                            } else {
-                                res.status(200)
-                                    .cookie('wssmm', token, cookieConfig)
-                                    .send({ message: 'Вход совершен' })
-                            }
-                        })
-                    }
-                })
-            } else {
-                res.status(500)
-                    .send({ message: 'Пароли не совпадают' })
-            }
+            user.authToken = token
+            user.restoreCode = null
+            user.id = id
+
+            users.findOne({ email: user.email }).then((doc) => {
+                if (doc) {
+                    res.status(500)
+                        .send({ message: 'Пользователь с такой почтой уже существует' })
+                } else {
+                    users.insertOne(user, (error, result) => {
+                        if (error) {
+                            console.log('error inser database', error)
+                            res.status(500)
+                                .send({ err: `Error insert db, ${error}` })
+                        } else {
+                            res.status(200)
+                                .cookie('wssmm', token, cookieConfig)
+                                .send({ message: 'Вход совершен' })
+                        }
+                    })
+                }
+            })
+                .catch((err) => console.error(err))
         })
 }

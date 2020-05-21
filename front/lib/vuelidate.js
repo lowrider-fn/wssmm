@@ -62,7 +62,11 @@ const vuelidate = {
             equal   : 'Пароли не совпадают',
         })
     },
-
+    errCode() {
+        return this.transport({
+            required: 'Введите код из письма',
+        })
+    },
     errChb() {
         return this.transport({
             checked: 'Необходимо согласие',

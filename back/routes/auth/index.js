@@ -14,8 +14,8 @@ module.exports = (app, db, config) => {
     login(router, db, config)
     logout(router, db, config)
     register(router, db, config)
+    restorePwd(router, db, config)
+    updatePwd(router, db, config)
 
     app.use('/auth', router)
-    // restorePwd(app, db, config)
-    // updatePwd(app, db, config)
 }

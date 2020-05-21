@@ -17,7 +17,11 @@
                :isPwd="true"
         />
         <div class="auth__btn">
-            <Btn :disabled="$v.form.$invalid || IS_LOAD"
+            <Ref class="auth__restore-link"
+                 :to="{name:'auth-restore-pwd'}"
+                 text="Забыли пароль?"
+            />
+            <Btn :disabled="IS_LOAD"
                  @click="send()"
             >
                 Войти
@@ -27,17 +31,12 @@
 </template>
 
 <script>
-import Field from '~/components/common/ui/field'
-import Btn from '~/components/common/ui/btn'
 
 import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'
 
 export default {
-    name      : 'Login',
-    components: {
-        Field, Btn,
-    },
+    name: 'Login',
     beforeRouteEnter(to, from, next) {
         to.meta.title = 'Авторизация'
         next()
@@ -67,7 +66,6 @@ export default {
                 $err     : vuelidate.errPwd(),
             },
         },
-
     },
     computed: {
         ...mapGetters('auth', [
@@ -75,13 +73,11 @@ export default {
         ]),
     },
     methods: {
-        emitHandler() {
-            if (!this.$v.form.$invalid) this.$emit('send', this.form)
-        },
         ...mapActions('auth', [
             'login',
         ]),
         send() {
+            this.$v.form.$touch()
             if (!this.$v.form.$invalid) {
                 this.login(this.form)
                     .then(() => this.$router.push({ name: 'profile' }))
@@ -91,5 +87,15 @@ export default {
 }
 </script>
 
-// <style lang="scss" scoped>
-// </style>
+ <style lang="scss" scoped>
+.auth__btn {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth__restore-link {
+    padding: 0;
+
+    text-transform: inherit;
+}
+</style>

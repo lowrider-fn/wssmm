@@ -52,10 +52,13 @@
                   :isErr="vuelidate.isError($v.form.accept)"
                   :errText="vuelidate.errText($v.form.accept)"
         >
-            Я ознакомился с <a href="#" target="_blank" class="link">политикой</a>
+            Я ознакомился с
+            <Ref href="#" target="_blank" text="политикой"
+                 type="a"
+            />
         </Checkbox>
         <div class="auth__btn">
-            <Btn :disabled="$v.form.$invalid"
+            <Btn :disabled="IS_LOAD"
                  @click="send()"
             >
                 Registration
@@ -150,8 +153,11 @@ export default {
             'register',
         ]),
         send() {
+            this.$v.form.$touch()
             if (!this.$v.form.$invalid) {
-                this.register(this.form)
+                const form = { ...this.form }
+                delete form.pwdConfirm
+                this.register(form)
                     .then(() => this.$router.push({ name: 'profile' }))
             }
         },

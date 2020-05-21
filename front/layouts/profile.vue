@@ -44,7 +44,7 @@ export default {
         links() {
             return [
                 {
-                    href  : '/auth',
+                    to    : { name: 'auth' },
                     text  : 'Выйти',
                     event : '',
                     action: this.showConfirm,

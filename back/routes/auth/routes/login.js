@@ -21,11 +21,14 @@ module.exports = (app, users, config) => {
             }
         },
         (req, res) => {
-            users.find({ email: req.body.email }).toArray((err, results) => {
-                if (results.length > 0) {
-                    if (results[0].pwd === req.body.pwd) {
-                        const token = jwtSign(results[0].id, config.secret)
-                        results[0].authToken = token
+            users.findOne({ email: req.body.email }).then((doc) => {
+                console.log(doc)
+
+                if (doc) {
+                    if (doc.pwd === req.body.pwd) {
+                        const token = jwtSign(doc.id, config.secret)
+                        users.update(doc, { $set: { authToken: token } })
+
                         res.status(200)
                             .cookie('wssmm', token, cookieConfig)
                             .send({ message: 'Вход совершен' })

@@ -16,11 +16,11 @@ export const auth = ({ $get: get, $post: post }) => ({
         const result = await post('/auth/register', data)
         return result
     },
-    async restorePwd(data) {
+    async restore(data) {
         const result = await post('/auth/restore', data)
         return result
     },
-    async updatePwd(data) {
+    async update(data) {
         const result = await post('/auth/update', data)
         return result
     },
