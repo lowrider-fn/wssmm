@@ -1,4 +1,7 @@
 {
+  "path-intellisense.mappings": {
+    "~": "${workspaceRoot}/src",
+  },
   "bracket-pair-colorizer-2.colors": [
     "#fff",
     "#FF5252",
@@ -14,7 +17,6 @@
     }
   },
   "workbench.colorTheme": "Monokai",
-  "window.zoomLevel": 1,
   "javascript.validate.enable": false,
   "css.validate": false,
   "less.validate": false,
@@ -33,15 +35,14 @@
     "typescript",
     "typescriptreact",
   ],
-  "git.confirmSync": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "timeline.excludeSources": [
     "git-history"
   ],
+  "git.confirmSync": true,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
-  "terminal.integrated.shell.osx": "/bin/zsh",
   "dart.debugExternalLibraries": false,
   "dart.debugSdkLibraries": false,
   "dart.flutterSdkPath": "/Users/lowrider-fn/Documents/dev/flutter",

@@ -27,13 +27,9 @@
 </template>
 
 <script>
-import Icon from './icon'
 
 export default {
-    name      : 'Checkbox',
-    components: {
-        Icon,
-    },
+    name : 'Checkbox',
     props: {
         checked: {
             type    : Boolean,

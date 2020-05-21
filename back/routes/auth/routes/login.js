@@ -27,7 +27,7 @@ module.exports = (app, users, config) => {
                         const token = jwtSign(results[0].id, config.secret)
                         results[0].authToken = token
                         res.status(200)
-                            .cookie('gmwc', token, cookieConfig)
+                            .cookie('wssmm', token, cookieConfig)
                             .send({ message: 'Вход совершен' })
                     } else {
                         res.status(500)

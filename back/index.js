@@ -19,7 +19,7 @@ const mongo = new MongoClient(config.dbUrl, {
 
 mongo.connect((err, database) => {
     if (err) return console.log(err)
-    const users = database.db('gmw').collection('users')
+    const users = database.db('wssmm').collection('users')
 
     auth(app, users, config)
 

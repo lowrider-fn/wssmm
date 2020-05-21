@@ -19,6 +19,7 @@ export default {
         { src: '~/plugins/api' },
         { src: '~/plugins/vuelidate' },
         { src: '~/plugins/v-mask' },
+        { src: '~/plugins/global-ui' },
 
     ],
     css: [

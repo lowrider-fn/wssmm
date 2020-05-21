@@ -13,7 +13,7 @@ export default {
     middleware: 'non-auth',
     head() {
         return {
-            title: 'GMW продукты',
+            title: 'WSSMM продукты',
         }
     },
 }

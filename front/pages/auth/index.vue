@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import Field from '~/components/common/field'
-import Btn from '~/components/common/btn'
+import Field from '~/components/common/ui/field'
+import Btn from '~/components/common/ui/btn'
 
 import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'

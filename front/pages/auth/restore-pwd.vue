@@ -27,17 +27,11 @@
 </template>
 
 <script>
-import Field from '~/components/common/field'
-import Btn from '~/components/common/btn'
 
-import { required, email, helpers } from 'vuelidate/lib/validators'
+// import { required, email, helpers } from 'vuelidate/lib/validators'
 
-const err = (text) => helpers.withParams({ text }, () => true)
 export default {
-    name      : 'AuthLogin',
-    components: {
-        Field, Btn,
-    },
+    name: 'RestorePwd',
     data() {
         return {
             form: {
@@ -50,30 +44,8 @@ export default {
         to.meta.title = 'Востановление пароля'
         next()
     },
-    validations() {
-        if (this.$route.meta.admin) {
-            return {
-                form: {
-                    required,
-                    pwd: {
-                        required,
-                    },
-                },
-            }
-        }
-        return {
-            form: {
-                required,
-                email: {
-                    required,
-                    email,
-                    err: err('Email not valid'),
-                },
-                pwd: {
-                    required,
-                },
-            },
-        }
+    validations: {
+
     },
     methods: {
         emitHandler() {

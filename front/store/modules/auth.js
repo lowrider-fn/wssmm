@@ -24,7 +24,7 @@ const actions = {
                 return res
             }
         } catch (err) {
-            store.dispatch('notif/addErr', err.msg, { root: true })
+            store.dispatch('notifs/addErr', err.msg, { root: true })
             throw err
         } finally {
             store.commit('TOGGLE_IS_LOAD')
@@ -39,7 +39,7 @@ const actions = {
                 return res
             }
         } catch (err) {
-            store.dispatch('notif/addErr', err.msg, { root: true })
+            store.dispatch('notifs/addErr', err.msg, { root: true })
             throw err
         } finally {
             store.commit('TOGGLE_IS_LOAD')
@@ -82,6 +82,7 @@ const actions = {
                 return res
             }
         } catch (err) {
+            store.dispatch('notifs/addErr', err.msg, { root: true })
             console.error(`${err}`)
             throw err
         } finally {

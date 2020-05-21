@@ -6,13 +6,11 @@
                     :key="i"
                     class="header__item"
                 >
-                    <router-link class="link-nav"
-                                 :event="link.event === ''?'' : 'click'"
-                                 :to="link.href"
-                                 @click.native.prevent="link.action ? link.action() : null"
-                    >
-                        {{ link.text }}
-                    </router-link>
+                    <Ref :event="link.event"
+                         :to="link.to"
+                         :text="link.text"
+                         @click.native="link.action ? link.action() : null"
+                    />
                 </li>
             </ul>
         </nav>
@@ -20,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
     name : 'Header',
     props: {

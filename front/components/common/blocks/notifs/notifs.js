@@ -9,8 +9,8 @@ const mutations = {
         state.notifs.forEach((el, i) => el.id === id && state.notifs.splice(i, 1))
     },
 
-    ADD(state, notif) {
-        state.notifs.unshift(notif)
+    ADD(state, notifs) {
+        state.notifs.unshift(notifs)
     },
 }
 

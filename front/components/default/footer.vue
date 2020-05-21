@@ -7,13 +7,11 @@
                         :key="i"
                         class="footer__item"
                     >
-                        <router-link class="link-nav"
-                                     :event="link.event === ''?'' : 'click'"
-                                     :to="link.href"
-                                     @click.native.prevent="link.action ? link.action() : null"
-                        >
-                            {{ link.text }}
-                        </router-link>
+                        <Ref :event="link.event"
+                             :to="link.to"
+                             :text="link.text"
+                             @click.native="link.action ? link.action() : null"
+                        />
                     </li>
                 </ul>
             </nav>
@@ -26,21 +24,29 @@
                 </Btn>
             </div>
             <div class="footer__contacts">
-                <p>Телефон для связи <a class="link" href="tel:+7 (999) 999-99-99">+7 (999) 999-99-99</a></p>
-                <p>Почта <a class="link" href="mailto:gmw@gmail.com">gmw@gmail.com</a></p>
+                <p>
+                    Телефон для связи
+                    <Ref type="a"
+                         href="tel:+7 (999) 999-99-99"
+                         text='+7 (999) 999-99-99'
+                    />
+                </p>
+                <p>
+                    Почта
+                    <Ref type="a"
+                         href="mailto:wssmm@gmail.com"
+                         text='wssmm@gmail.com'
+                    />
+                </p>
             </div>
         </div>
     </footer>
 </template>
 
 <script>
-import Btn from '~/components/common/btn'
 
 export default {
-    name      : 'Footer',
-    components: {
-        Btn,
-    },
+    name : 'Footer',
     props: {
         isAuth: {
             type: [Boolean, null],

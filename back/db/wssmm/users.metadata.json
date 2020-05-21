@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"gmw.users"}],"uuid":"8970b1705ce641dcbbaab6fc24dea64c"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"wssmm.users"}],"uuid":"2bbdc32974bc44968772e64ababdea84"}

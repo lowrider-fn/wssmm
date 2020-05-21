@@ -6,7 +6,7 @@
         <main class="main">
             <nuxt />
         </main>
-        <NotifList />
+        <Notifs />
         <Confirm :isShow="isShow"
                  :isHide.sync="isShow"
                  title="Вы действительно хотите выйти?"
@@ -18,10 +18,10 @@
     </section>
 </template>
 <script>
-import Header from '~/components/blocks/header'
-import Footer from '~/components/blocks/footer'
-import NotifList from '~/components/common/notif/notif-list'
-import Confirm from '~/components/common/confirm'
+import Header from '~/components/default/header'
+import Footer from '~/components/default/footer'
+import Notifs from '~/components/common/blocks/notifs'
+import Confirm from '~/components/common/blocks/confirm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -29,7 +29,7 @@ export default {
     components: {
         Header,
         Footer,
-        NotifList,
+        Notifs,
         Confirm,
     },
     data() {

@@ -6,22 +6,16 @@
         <main class="main">
             <nuxt />
         </main>
-        <NotifList />
-        <Confirm :isShow="isShow"
-                 :isHide.sync="isShow"
-                 title="Вы действительно хотите выйти?"
-                 @accept="logout()"
-        />
+        <Notifs />
         <Footer :links="links"
                 :isAuth="IS_AUTH"
         />
     </section>
 </template>
 <script>
-import Header from '~/components/blocks/header'
-import Footer from '~/components/blocks/footer'
-import NotifList from '~/components/common/notif/notif-list'
-import Confirm from '~/components/common/confirm'
+import Header from '~/components/default/header'
+import Footer from '~/components/default/footer'
+import Notifs from '~/components/common/blocks/notifs'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -29,8 +23,7 @@ export default {
     components: {
         Header,
         Footer,
-        NotifList,
-        Confirm,
+        Notifs,
     },
     data() {
         return {
@@ -44,15 +37,15 @@ export default {
         links() {
             return [
                 {
-                    href: '/',
+                    to  : { name: 'index' },
                     text: 'Продукты',
                 },
                 {
-                    href: '/auth',
+                    to  : { name: 'auth' },
                     text: 'Авторизация',
                 },
                 {
-                    href: '/auth/register',
+                    to  : { name: 'auth-register' },
                     text: 'Регистрация',
                 },
             ]

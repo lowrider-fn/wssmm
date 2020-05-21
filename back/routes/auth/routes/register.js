@@ -10,7 +10,7 @@ const cookieConfig = {
 module.exports = (app, users, config) => {
     app.post('/register',
         (req, res, next) => {
-            if (req.cookies.gmwc) {
+            if (req.cookies.wssmm) {
                 res.status(500)
                     .send({ message: 'Вход уже совершен' })
             } else if (Object.keys(req.body).length === 0) {
@@ -41,7 +41,7 @@ module.exports = (app, users, config) => {
                                     .send({ err: `Error insert db, ${error}` })
                             } else {
                                 res.status(200)
-                                    .cookie('gmwc', token, cookieConfig)
+                                    .cookie('wssmm', token, cookieConfig)
                                     .send({ message: 'Вход совершен' })
                             }
                         })

@@ -13,15 +13,15 @@ import Notif from './notif.vue'
 import { mapMutations, mapGetters } from 'vuex'
 
 export default {
-    name      : 'NotifList',
+    name      : 'Notifs',
     components: {
         Notif,
     },
     computed: {
-        ...mapGetters('notif', ['NOTIFS']),
+        ...mapGetters('notifs', ['NOTIFS']),
     },
     methods: {
-        ...mapMutations('notif', ['CLOSE']),
+        ...mapMutations('notifs', ['CLOSE']),
     },
 }
 </script>

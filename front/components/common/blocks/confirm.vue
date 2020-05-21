@@ -27,12 +27,11 @@
 
 <script>
 import Popup from './popup'
-import Btn from './btn'
 
 export default {
-    name      : 'PopupConfirm',
+    name      : 'Confirm',
     components: {
-        Popup, Btn,
+        Popup,
     },
     props: {
         isShow: {

@@ -1,4 +1,4 @@
-# gmw front
+# wssmm front
 
 #### you must definitely install docker, mongo
 
@@ -6,9 +6,9 @@
 
 ```bash
 # install dependencies
-git clone https://gitlab.com/lowrider-fn/gmw.git
+git clone https://gitlab.com/lowrider-fn/wssmm.git
 
-cd gmw/front
+cd wssmm/front
 
 npm install
 
@@ -27,13 +27,13 @@ $ npm run generate
 
 ```bash
 # docker create img
-docker build -t registry.gitlab.com/lowrider-fn/gmw/front .
+docker build -t registry.gitlab.com/lowrider-fn/wssmm/front .
 
 # docker check img
-docker run -p 3000:3000 registry.gitlab.com/lowrider-fn/gmw/front
+docker run -p 3000:3000 registry.gitlab.com/lowrider-fn/wssmm/front
 
 # docker push img
-docker push registry.gitlab.com/lowrider-fn/gmw/front
+docker push registry.gitlab.com/lowrider-fn/wssmm/front
 
 # docker up
 docker-compose up --build
@@ -51,7 +51,7 @@ docker <command> -d
 		- '/front/node_modules'
 	  
 #for prod
-image: registry.gitlab.com/lowrider-fn/gmw/back
+image: registry.gitlab.com/lowrider-fn/wssmm/back
 ```
 
 ## Heroku

@@ -4,13 +4,9 @@
     </div>
 </template>
 <script>
-import Icon from './icon'
 
 export default {
-    name      : 'Preeloader',
-    components: {
-        Icon,
-    },
+    name: 'Preeloader',
 }
 </script>
 <style lang="scss" scoped>

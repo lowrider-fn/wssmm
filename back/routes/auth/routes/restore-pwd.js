@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 module.exports = (app, users, config) => {
     app.get('/restore',
         (req, res, next) => {
-            if (req.cookies.gmwc) {
+            if (req.cookies.wssmm) {
                 next()
             } else {
                 res.status(500)
@@ -12,7 +12,7 @@ module.exports = (app, users, config) => {
             }
         },
         (req, res) => {
-            const decoded = jwt.verify(req.cookies.gmwc, config.secret)
+            const decoded = jwt.verify(req.cookies.wssmm, config.secret)
             users.find({ id: decoded.id }).toArray((err, results) => {
                 if (results.length > 0) {
                     res.status(200)

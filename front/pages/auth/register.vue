@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import Field from '~/components/common/field'
-import Checkbox from '~/components/common/Checkbox'
-import Btn from '~/components/common/btn'
+import Field from '~/components/common/ui/field'
+import Checkbox from '~/components/common/ui/checkbox'
+import Btn from '~/components/common/ui/btn'
 
 import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'
