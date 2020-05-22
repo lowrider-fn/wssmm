@@ -1,17 +1,17 @@
 <template>
     <h1>
-        Профиль
+        Магазин
     </h1>
 </template>
 
 <script>
 export default {
-    name      : 'Profile',
+    name      : 'Shop',
     layout    : 'profile',
     middleware: 'auth',
     head() {
         return {
-            title: 'Профиль',
+            title: 'Магазин',
         }
     },
 }

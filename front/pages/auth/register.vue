@@ -77,6 +77,7 @@ import vuelidate from '~/lib/vuelidate'
 
 export default {
     name      : 'Register',
+    middleware: 'non-auth',
     components: {
         Field, Btn, Checkbox,
     },

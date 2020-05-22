@@ -8,17 +8,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
     name      : 'Auth',
     middleware: 'non-auth',
-    data() {
-        return {
-            isLogin: true,
-        }
-    },
-    computed: {
+    computed  : {
         title() {
             return this.$route.meta.title
         },
@@ -27,13 +20,6 @@ export default {
         return {
             title: this.title,
         }
-    },
-    methods: {
-        ...mapActions([
-            'login',
-            'registration',
-            'adminLogin',
-        ]),
     },
 }
 </script>

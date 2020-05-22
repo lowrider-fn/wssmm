@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const jwtSign = (id, secret) => jwt.sign({ id }, secret)
 
@@ -34,16 +35,24 @@ module.exports = (app, users, config) => {
                     res.status(500)
                         .send({ message: 'Пользователь с такой почтой уже существует' })
                 } else {
-                    users.insertOne(user, (error, result) => {
-                        if (error) {
-                            console.log('error inser database', error)
+                    bcrypt.hash(user.pwd, config.salt, (err, hash) => {
+                        if (err) {
                             res.status(500)
-                                .send({ err: `Error insert db, ${error}` })
-                        } else {
-                            res.status(200)
-                                .cookie('wssmm', token, cookieConfig)
-                                .send({ message: 'Вход совершен' })
+                                .send({ message: `Error hashing pwd: ${err}` })
                         }
+                        user.pwd = hash
+                        users.insertOne(user, (err, result) => {
+                            console.log(result)
+
+                            if (err) {
+                                res.status(500)
+                                    .send({ message: `Error insert db, ${err}` })
+                            } else {
+                                res.status(200)
+                                    .cookie('wssmm', token, cookieConfig)
+                                    .send({ message: 'Вход совершен' })
+                            }
+                        })
                     })
                 }
             })

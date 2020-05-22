@@ -1,9 +1,7 @@
 
-const nonAuth = async ({ store, redirect }) => {
+const nonAuth = ({ store, redirect }) => {
     if (store.getters['auth/IS_AUTH']) {
-        console.log('ok')
-
-        await redirect({ name: 'profile' })
+        redirect({ name: 'profile' })
     }
 }
 

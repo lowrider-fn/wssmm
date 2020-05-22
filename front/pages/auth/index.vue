@@ -36,7 +36,8 @@ import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'
 
 export default {
-    name: 'Login',
+    name      : 'Login',
+    middleware: 'non-auth',
     beforeRouteEnter(to, from, next) {
         to.meta.title = 'Авторизация'
         next()

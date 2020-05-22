@@ -23,7 +23,8 @@ import { mapActions, mapGetters } from 'vuex'
 import vuelidate from '~/lib/vuelidate'
 
 export default {
-    name: 'RestorePwd',
+    name      : 'RestorePwd',
+    middleware: 'non-auth',
     data() {
         return {
             vuelidate,

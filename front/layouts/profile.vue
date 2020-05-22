@@ -44,6 +44,22 @@ export default {
         links() {
             return [
                 {
+                    to  : { name: 'profile' },
+                    text: 'Мои курсы',
+                },
+                {
+                    to  : { name: 'profile-shop' },
+                    text: 'Магазин',
+                },
+                {
+                    to  : { name: 'profile-settings' },
+                    text: 'Настройки',
+                },
+                {
+                    to  : { name: 'profile-feedback' },
+                    text: 'Обратная связь',
+                },
+                {
                     to    : { name: 'auth' },
                     text  : 'Выйти',
                     event : '',

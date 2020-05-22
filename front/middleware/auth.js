@@ -1,7 +1,7 @@
 
-const auth = async ({ store, redirect }) => {
+const auth = ({ store, redirect }) => {
     if (!store.getters['auth/IS_AUTH']) {
-        await redirect({ name: 'auth' })
+        redirect({ name: 'auth' })
     }
 }
 

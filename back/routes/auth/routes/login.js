@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const jwtSign = (id, secret) => jwt.sign({ id }, secret)
 
@@ -22,20 +23,25 @@ module.exports = (app, users, config) => {
         },
         (req, res) => {
             users.findOne({ email: req.body.email }).then((doc) => {
-                console.log(doc)
-
                 if (doc) {
-                    if (doc.pwd === req.body.pwd) {
-                        const token = jwtSign(doc.id, config.secret)
-                        users.update(doc, { $set: { authToken: token } })
+                    bcrypt.compare(req.body.pwd, doc.pwd, (err, isMatch) => {
+                        if (err) {
+                            res.status(500)
+                                .send({ message: `Error compare pwd: ${err}` })
+                        }
 
-                        res.status(200)
-                            .cookie('wssmm', token, cookieConfig)
-                            .send({ message: 'Вход совершен' })
-                    } else {
-                        res.status(500)
-                            .send({ message: 'Пароли не совпадают' })
-                    }
+                        if (isMatch) {
+                            const token = jwtSign(doc.id, config.secret)
+                            users.update(doc, { $set: { authToken: token } })
+
+                            res.status(200)
+                                .cookie('wssmm', token, cookieConfig)
+                                .send({ message: 'Вход совершен' })
+                        } else {
+                            res.status(500)
+                                .send({ message: 'Пароли не совпадают' })
+                        }
+                    })
                 } else {
                     res.status(500)
                         .send({ message: 'Пользователь не найден' })
