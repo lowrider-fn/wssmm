@@ -1,7 +1,7 @@
 
 const nodemailer = require('nodemailer')
 
-function sendMail(req, code) {
+function sendMail(req, code, config) {
     // const setDescription = (text) => (text ? text.replace(/\n/g, ' ') : '')
     // const setAttachments = (files) => {
     //     if (files.length > 0) {
@@ -18,15 +18,15 @@ function sendMail(req, code) {
         port  : 465,
         secure: true, // true for 465, false for other ports
         auth  : {
-
+            user: config.email,
         },
     })
 
     const mail = {
         from   : 'With Soul SMM',
-        to     : `${req.body.email}`,
+        to     : `${config.email}`,
         subject: 'Востановление пароля',
-        text   : 'text not found. This is ERROR. Call to Viktor OR Sergey.',
+        text   : 'Текст отсутствует. Ошибка.',
         html   : `<h1>Здраствуйте, код востановления ${code}</h2>,
 <br/><br/>
 <p>With Soul SMM</p>`,
@@ -62,7 +62,7 @@ module.exports = (app, users, config) => {
 
                     users.update(doc, { $set: { restoreCode: code } })
 
-                    sendMail(req, code)
+                    sendMail(req, code, config)
 
                     res.status(200)
                         .send({ message: `Проверьте вашу почту ${req.body.email}` })

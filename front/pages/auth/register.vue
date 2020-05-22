@@ -107,7 +107,7 @@ export default {
                     required : vuelidate.required,
                     maxLength: vuelidate.maxLength(32),
                     minLength: vuelidate.minLength(4),
-                    $err     : vuelidate.errBase({ max: 32, min: 4 }),
+                    $err     : vuelidate.errBase({ max: 32, min: 2 }),
                 },
                 surname: {
                     required : vuelidate.required,

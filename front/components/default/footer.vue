@@ -34,8 +34,8 @@
                 <p>
                     Почта
                     <Ref type="a"
-                         href="mailto:wssmm@gmail.com"
-                         text='wssmm@gmail.com'
+                         href="mailto:with.soul.smm@gmail.com"
+                         text='with.soul.smm@gmail.com'
                     />
                 </p>
             </div>
