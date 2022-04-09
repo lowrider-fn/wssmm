@@ -2,13 +2,16 @@
   "path-intellisense.mappings": {
     "~": "${workspaceRoot}/src",
   },
-  "bracket-pair-colorizer-2.colors": [
-    "#fff",
-    "#FF5252",
-    "#4CAF50",
-    "#FB8C00",
-    "#5CBBF6",
-  ],
+  "editor.bracketPairColorization.enabled": true,
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#fff",
+    "editorBracketHighlight.foreground2": "#FF5252",
+    "editorBracketHighlight.foreground3": "#4fb1bc",
+    "editorBracketHighlight.foreground4": "#FB8C00",
+    "editorBracketHighlight.foreground5": "#4CAF50",
+    "editorBracketHighlight.foreground6": "#c172d9",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#f6fa00"
+  },
   "highlight-matching-tag.styles": {
     "opening": {
       "name": {
